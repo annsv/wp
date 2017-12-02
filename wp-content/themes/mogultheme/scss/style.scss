@@ -1,0 +1,129 @@
+/*
+ * Theme Name: MogulTheme
+ * Author: Beetroot Task  (Anna Sebova)
+ */
+
+/*!
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+// Core variables and mixins
+@import "../bootstrap/assets/stylesheets/bootstrap/variables";
+@import "../bootstrap/assets/stylesheets/bootstrap/mixins";
+
+// Reset and dependencies
+@import "../bootstrap/assets/stylesheets/bootstrap/normalize";
+@import "../bootstrap/assets/stylesheets/bootstrap/print";
+@import "../bootstrap/assets/stylesheets/bootstrap/glyphicons";
+
+// Core CSS
+@import "../bootstrap/assets/stylesheets/bootstrap/scaffolding";
+@import "../bootstrap/assets/stylesheets/bootstrap/type";
+@import "../bootstrap/assets/stylesheets/bootstrap/code";
+@import "../bootstrap/assets/stylesheets/bootstrap/grid";
+@import "../bootstrap/assets/stylesheets/bootstrap/tables";
+@import "../bootstrap/assets/stylesheets/bootstrap/forms";
+@import "../bootstrap/assets/stylesheets/bootstrap/buttons";
+
+// Components
+@import "../bootstrap/assets/stylesheets/bootstrap/component-animations";
+@import "../bootstrap/assets/stylesheets/bootstrap/dropdowns";
+@import "../bootstrap/assets/stylesheets/bootstrap/button-groups";
+@import "../bootstrap/assets/stylesheets/bootstrap/input-groups";
+@import "../bootstrap/assets/stylesheets/bootstrap/navs";
+@import "../bootstrap/assets/stylesheets/bootstrap/navbar";
+@import "../bootstrap/assets/stylesheets/bootstrap/breadcrumbs";
+@import "../bootstrap/assets/stylesheets/bootstrap/pagination";
+@import "../bootstrap/assets/stylesheets/bootstrap/pager";
+@import "../bootstrap/assets/stylesheets/bootstrap/labels";
+@import "../bootstrap/assets/stylesheets/bootstrap/badges";
+@import "../bootstrap/assets/stylesheets/bootstrap/jumbotron";
+@import "../bootstrap/assets/stylesheets/bootstrap/thumbnails";
+@import "../bootstrap/assets/stylesheets/bootstrap/alerts";
+@import "../bootstrap/assets/stylesheets/bootstrap/progress-bars";
+@import "../bootstrap/assets/stylesheets/bootstrap/media";
+@import "../bootstrap/assets/stylesheets/bootstrap/list-group";
+@import "../bootstrap/assets/stylesheets/bootstrap/panels";
+@import "../bootstrap/assets/stylesheets/bootstrap/responsive-embed";
+@import "../bootstrap/assets/stylesheets/bootstrap/wells";
+@import "../bootstrap/assets/stylesheets/bootstrap/close";
+
+// Components w/ JavaScript
+@import "../bootstrap/assets/stylesheets/bootstrap/modals";
+//@import "../bootstrap/assets/stylesheets/bootstrap/tooltip";
+//@import "../bootstrap/assets/stylesheets/bootstrap/popovers";
+//@import "../bootstrap/assets/stylesheets/bootstrap/carousel";
+
+// Utility classes
+@import "../bootstrap/assets/stylesheets/bootstrap/utilities";
+@import "../bootstrap/assets/stylesheets/bootstrap/responsive-utilities";
+
+
+//Variables
+
+
+//Mixin
+@font-face {
+  font-family: "Futura LT";
+  src: url(../fonts/FuturaLT-Light_0.ttf);
+}
+
+body{
+	background:#fff;
+	font-family: "Futura LT";
+}
+
+h1{
+	font-size:30px;
+	text-align:center;
+}
+
+h2{font-size:22px;}
+h3{font-size:20px;}
+
+img{max-width:100%;}
+header{
+	.jumbotron {
+	    background-image: url(img/inner-header-bg.jpg);
+	    margin-bottom: 0;
+	    background-repeat: no-repeat;
+	    background-position: center;
+	    -webkit-background-size: cover;
+	    background-size: cover;
+	    &--main{
+		    text-align:center;
+		    background-image: url(img/main-header-bg.jpg);		    
+	    }
+	}
+	.top-menu{
+	    padding: 0 30px;
+	    margin: 0;
+	    background: #fff;
+	}
+	.book-button{
+		    background-image: url(img/book-button.png);
+	    margin-bottom: 0;
+	    background-repeat: no-repeat;
+	    background-position: center;
+	    -webkit-background-size: cover;
+	    background-size: cover;
+	}
+}
+
+.container.content-on-main{
+	max-width:974px;
+	padding: 130px 0 70px;
+}
+
+
+
+.portfolio{
+	.container{max-width:1540px}	
+}
+
+.blog{
+	.container{max-width:1680px}
+}
+
