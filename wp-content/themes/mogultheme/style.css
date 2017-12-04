@@ -5490,24 +5490,71 @@ footer {
   color: #fff;
   text-align: center;
   min-height: 335px; }
+  footer input {
+    width: 100%; }
 
-.footer-blocks {
-  padding: 28px 0 20px;
+.footer {
+  padding: 30px 0 20px;
   max-width: 1708px;
-  line-height: 1.572; }
-  .footer-blocks p {
+  line-height: 1.572;
+  font-size: 16px; }
+  .footer p {
     margin: 0; }
-  .footer-blocks div {
-    padding: 30px; }
-  .footer-blocks div:nth-child(2) {
+  .footer-subscription {
+    padding: 40px; }
+  .footer-contacts {
     border-left: 1px solid #fff;
-    border-right: 1px solid #fff; }
+    border-right: 1px solid #fff;
+    padding: 40px 0 55px; }
+  .footer-social {
+    padding: 40px 0 0; }
+  .footer-block-title {
+    font-weight: 700;
+    font-size: 19pt;
+    letter-spacing: 1px;
+    margin-bottom: 50px; }
+  .footer-block-message {
+    margin-bottom: 30px; }
+  .footer-contact {
+    margin: 0;
+    padding: 0; }
+    .footer-contact li {
+      display: inline-block; }
+      .footer-contact li span {
+        margin: 0 0 0 2px;
+        width: 20px;
+        padding-left: 30px; }
+      .footer-contact li.icon-city span {
+        background: url(img/sprite.png) 6px -231px no-repeat; }
+      .footer-contact li.icon-email span {
+        background: url(img/sprite.png) 0px -252px no-repeat; }
+      .footer-contact li.icon-tel span {
+        background: url(img/sprite.png) 0px -276px no-repeat; }
 
-.footer-block-title {
-  font-weight: 700;
-  font-size: 19pt;
-  letter-spacing: 1px;
-  margin-bottom: 50px; }
+.social-links {
+  margin: 0;
+  padding: 0; }
+  .social-links li {
+    display: inline-block;
+    margin: 0 0 0 2px; }
+    .social-links li a {
+      display: inline-block;
+      margin-top: 7px;
+      width: 64px;
+      height: 64px;
+      background-image: url(img/sprite.png); }
+      .social-links li a.facebook {
+        background-position: -32px 66px; }
+      .social-links li a.twitter {
+        background-position: -108px 66px; }
+      .social-links li a.insta {
+        background-position: -185px 65px; }
+      .social-links li a.pinterest {
+        background-position: -263px 64px; }
+      .social-links li a.linkedin {
+        background-position: -340px 65px; }
+      .social-links li a.email {
+        background-position: -417px 66px; }
 
 .portfolio .container {
   max-width: 1540px; }
