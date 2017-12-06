@@ -15,41 +15,33 @@
 ?>
 <footer>
 	<div class="container-fluid footer">
-		<div class="footer-subscription col-md-3 pull-left">
-			<div class="footer-block-title">Sing up for e-mail updates</div>
-				<div class="footer-block-message">
-					<p>Stay up to date with blah blah for</p>
-					<p>blah blah and yeah blah</p>
-				</div>
-			<input type="text" name="subscribe">
-		</div>
-		<div class="footer-contacts col-md-5">
-			<div class="footer-block-title">Mogul Makeup Artistry</div>
-				<div class="footer-block-message">				
-					<p>Allison Humeniuk</p>
-					<p>On-location Makeup Artist</p>
-				</div>
-			<ul class="footer-contact">
-				<li class="icon-city"><span></span>Portland, Maine</li>
-				<li class="icon-email"><span></span>allison@mogulmakeup.com</li>
-				<li class="icon-tel"><span></span>[207]370.4427</li>
-			</ul>				
-		</div>
-		<div class="footer-social col-md-4 pull-right">
-			<div class="footer-block-title">Stay connected with us!</div>
-				<div class="footer-block-message">			
-					<p>Stay up to date with blah blah</p>
-					<p>for blah blah and yeah blah</p>
-				</div>
-			<ul class="social-links">
-				<li><a class="facebook" href=""></a></li>
-				<li><a class="twitter" href=""></a></li>
-				<li><a class="insta" href=""></a></li>
-				<li><a class="pinterest" href=""></a></li>	
-				<li><a class="linkedin" href=""></a></li>
-				<li><a class="email" href=""></a></li>
-			</ul>
-		</div>		
+
+		<?php
+		if ( is_active_sidebar( 'sidebar-2' ) || is_active_sidebar( 'sidebar-3' ) ||
+	is_active_sidebar( 'sidebar-4' ) ) :
+		?>
+
+			<aside class="widget-area" role="complementary" aria-label="<?php esc_attr_e( 'Footer', 'twentyseventeen' ); ?>">
+				<?php
+				if ( is_active_sidebar( 'sidebar-2' ) ) { ?>
+					<div class="footer-subscription col-md-3 pull-left">
+						<?php dynamic_sidebar( 'sidebar-2' ); ?>
+					</div>
+				<?php }
+				if ( is_active_sidebar( 'sidebar-3' ) ) { ?>
+					<div class="footer-contacts col-md-5">
+						<?php dynamic_sidebar( 'sidebar-3' ); ?>
+					</div>
+				<?php }
+				if ( is_active_sidebar( 'sidebar-4' ) ) { ?>
+					<div class="footer-social col-md-4 pull-right">
+						<?php dynamic_sidebar( 'sidebar-4' ); ?>
+					</div>
+				<?php } ?>				
+			</aside><!-- .widget-area -->
+
+		<?php endif; ?>
+	
 	</div>
 </footer>
 
