@@ -18,6 +18,18 @@ if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
 }
 
 /**
+ * Header image.
+ */
+function mogultheme_header_image( $html, $header, $attr ) {
+	if ( isset( $attr['sizes'] ) ) {
+		$html = str_replace( $attr['sizes'], '100vw', $html );
+	}
+	return $html;
+}
+add_filter( 'get_header_image_tag', 'mogultheme_header_image', 10, 3 );
+
+
+/**
  * Register widget area.
  */
 function mogultheme_widgets_init() {
@@ -79,6 +91,28 @@ function mogultheme_setup() {
 	 */
 	add_theme_support( 'title-tag' );
 
+	// Add theme support for Custom Logo.
+	add_theme_support( 'custom-logo', array(
+		'width'       => 574,
+		'height'      => 600,
+		'flex-width'  => true,
+	) );
+
+	// Add theme support for selective refresh for widgets.
+	add_theme_support( 'customize-selective-refresh-widgets' );
+
+	/*
+	 * https://codex.wordpress.org/Custom_Headers
+	 */
+	$args = array(
+		'flex-width'    => true,
+		'width'         => 1920,
+		'flex-height'    => true,
+		'height'        => 670,
+		'default-image' => get_template_directory_uri() . '/img/main-header-bg.jpg',
+	);
+	add_theme_support( 'custom-header', $args );
+
 	/**
 	 * Register menu.
 	 */
@@ -95,9 +129,40 @@ add_action( 'after_setup_theme', 'mogultheme_setup' );
  */
 function mogultheme_scripts() {
 
+    //Colorbox stylesheet
+    wp_enqueue_style( 'colorbox', get_template_directory_uri() . 
+    '/colorbox/colorbox.css' );
+
 	// Theme stylesheet.
 	wp_enqueue_style( 'mogultheme-style', get_stylesheet_uri() );
-	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/bootstrap/assets/javascripts/bootstrap.min.js', array('jquery'), '3.7.7', true );
 
+	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/bootstrap/assets/javascripts/bootstrap.min.js', array('jquery'), '3.7.7', true );
+     
+    //Colorbox jQuery plugin js file
+    wp_enqueue_script( 'colorbox', get_template_directory_uri() . 
+    '/colorbox/jquery.colorbox-min.js', array( 'jquery'   ), '', true );
+    
+    //Add main.js file
+    wp_enqueue_script( 'themeslug-script', get_template_directory_uri() . 
+    '/js/script.js', array( 'colorbox' ), '', true );
+      
 }
 add_action( 'wp_enqueue_scripts', 'mogultheme_scripts' );
+
+
+/**
+ * Used by hook: 'customize_preview_init'
+ * 
+ * @see add_action('customize_preview_init',$func)
+ */
+function mogultheme_customizer_live_preview()
+{
+	wp_enqueue_script( 
+		  'mogultheme-themecustomizer',			//Give the script an ID
+		  get_template_directory_uri().'/js/theme-customizer.js',//Point to file
+		  array( 'jquery','customize-preview' ),	//Define dependencies
+		  '',						//Define a version (optional) 
+		  true						//Put script in footer?
+	);
+}
+add_action( 'customize_preview_init', 'mogultheme_customizer_live_preview' );

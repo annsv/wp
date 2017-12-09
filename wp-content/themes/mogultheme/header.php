@@ -47,11 +47,10 @@
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>		
-	<div class="jumbotron jumbotron--main">
-		<div class="site-logo"><img src="/wp-content/themes/mogultheme/img/mogul-logo-big.png">
-			
+		<div class="site-logo">
+		<?php the_custom_logo(); ?>			
+<img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
 		</div>
-	</div>	
 </header>
 <main>
 
