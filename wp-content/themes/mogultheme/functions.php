@@ -93,8 +93,8 @@ function mogultheme_setup() {
 
 	// Add theme support for Custom Logo.
 	add_theme_support( 'custom-logo', array(
-		'width'       => 574,
-		'height'      => 600,
+		'width'       => 1155,
+		'height'      => 608,
 		'flex-width'  => true,
 	) );
 
@@ -149,6 +149,115 @@ function mogultheme_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'mogultheme_scripts' );
 
+
+function mogultheme_customize_register( $wp_customize ) {
+
+	$wp_customize->add_section( 'theme_options', array(
+		'title'    => __( 'Theme Options', 'mogultheme' ),
+		'priority' => 130, // Before Additional CSS.
+	) );
+/*
+	$wp_customize->add_setting( 'page_layout', array(
+		'default'           => 'two-column',
+		'sanitize_callback' => 'mogultheme_sanitize_page_layout',
+		'transport'         => 'postMessage',
+	) );
+
+	$wp_customize->add_control( 'page_layout', array(
+		'label'       => __( 'Page Layout', 'mogultheme' ),
+		'section'     => 'theme_options',
+		'type'        => 'radio',
+		//'active_callback' => 'mogultheme_is_view_with_layout_option',
+	) );
+
+	//Filter number of front page sections in Twenty Seventeen.
+
+	$num_sections = apply_filters( 'mogultheme_front_page_sections', 4 );
+
+	// Create a setting and control for each of the sections available in the theme.
+	for ( $i = 1; $i < ( 1 + $num_sections ); $i++ ) {
+		$wp_customize->add_setting( 'panel_' . $i, array(
+			'default'           => false,
+			'sanitize_callback' => 'absint',
+			'transport'         => 'postMessage',
+		) );
+
+		$wp_customize->add_control( 'panel_' . $i, array(
+			// translators: %d is the front page section number 
+			'label'          => sprintf( __( 'Front Page Section %d Content', 'mogultheme' ), $i ),
+			'description'    => ( 1 !== $i ? '' : __( 'Select pages to feature in each area from the dropdowns. Add an image to a section by setting a featured image in the page editor. Empty sections will not be displayed.', 'mogultheme' ) ),
+			'section'        => 'theme_options',
+			'type'           => 'dropdown-pages',
+			'allow_addition' => true,
+			'active_callback' => 'mogultheme_is_static_front_page',
+		) );
+
+		$wp_customize->selective_refresh->add_partial( 'panel_' . $i, array(
+			'selector'            => '#panel' . $i,
+			'render_callback'     => 'mogultheme_front_page_section',
+			'container_inclusive' => true,
+		) );
+	}
+*/
+
+
+				$wp_customize->add_setting( 'mogultheme_textarea_home1', array(
+				  'capability' => 'edit_theme_options',
+				  'default' => 'Lorem Ipsum Dolor Sit amet',
+				  'sanitize_callback' => 'sanitize_text',
+				) );
+
+				$wp_customize->add_control( 'mogultheme_textarea_home1', array(
+				  'type' => 'textarea',
+				  'section'        => 'theme_options',
+				  'label' => __( 'Custom Text Area 1' ),
+				  'description' => __( 'This is a custom textarea.' ),
+				) );
+				$wp_customize->add_setting( 'mogultheme_textarea_home2', array(
+				  'capability' => 'edit_theme_options',
+				  'default' => 'Lorem Ipsum Dolor Sit amet',
+				  'sanitize_callback' => 'sanitize_text',
+				) );
+
+				$wp_customize->add_control( 'mogultheme_textarea_home2', array(
+				  'type' => 'textarea',
+				  'section'        => 'theme_options',
+				  'label' => __( 'Custom Text Area 2' ),
+				  'description' => __( 'This is a custom textarea.' ),
+				) );				
+
+				$wp_customize->add_setting( 'mogultheme_textarea_contacts', array(
+				  'capability' => 'edit_theme_options',
+				  'default' => 'Lorem Ipsum Dolor Sit amet',
+				  'sanitize_callback' => 'sanitize_text',
+				) );
+
+				$wp_customize->add_control( 'mogultheme_textarea_contacts', array(
+				  'type' => 'textarea',
+				  'section'        => 'theme_options',
+				  'label' => __( 'Custom Text Area 2' ),
+				  'description' => __( 'This is a custom textarea.' ),
+				) );
+
+
+
+
+ 	// Sanitize text
+	function sanitize_text( $text ) {
+	    return sanitize_text_field( $text );
+	}				
+
+}
+
+add_action( 'customize_register', 'mogultheme_customize_register' );
+
+/**
+ * Return whether we're previewing the front page and it's a static page.
+ */
+function mogultheme_is_static_front_page() {
+	return ( is_front_page() && ! is_home() );
+}
+  
 
 /**
  * Used by hook: 'customize_preview_init'

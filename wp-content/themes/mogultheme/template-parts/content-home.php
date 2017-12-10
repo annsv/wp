@@ -10,27 +10,39 @@
 
 <article>
 	<div class="container content-on-main">
-	<?php the_title( '<h1>', '</h1>' ); ?>
+	<?php the_title( '<h1>', '</h1>' ); 
 	
-	<? the_content();?>
-	
-		<div class="content-block">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit ani Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim		
-		</div> 
+if( get_theme_mod( 'mogultheme_textarea_home1') != "" ): ?>
+            <div class="content-block">
+                <?php echo get_theme_mod( 'mogultheme_textarea_home1'); ?>
+            </div>
+<?php endif; ?>
+
+
 		<div class="img-block1">
 			<img src="/wp-content/themes/mogultheme/img/blonde.jpg">
 		</div> 
-		<div class="content-block">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit ani Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim	
-		</div>	
-		<div class="img-block2">
+
+<?php /*if( get_theme_mod( 'mogultheme_textarea_home1') != "" ): ?>
+            <div class="content-block">
+                <?php echo get_theme_mod( 'mogultheme_textarea_home1'); ?>
+            </div>
+<?php endif;   */
+
+if( get_theme_mod( 'mogultheme_textarea_home2') != "" ): ?>
+            <div class="content-block">
+                <?php echo get_theme_mod( 'mogultheme_textarea_home2'); ?>
+            </div>
+<?php endif;  ?>
+
+		<div class="img-block1">
 			<img src="/wp-content/themes/mogultheme/img/makeup-master.jpg">
 		</div> 
-			<div class="contacts-block">
-				<p>Allison Humeniuk, Makeup Artist
-				Portland, Maine</p>
-				<p>allison@mogulmakeup.com
-				207.370.4427</p>
-			</div>	
+<? if( get_theme_mod( 'mogultheme_textarea_contacts') != "" ): ?>
+            <div class="content-block">
+                <?php echo get_theme_mod( 'mogultheme_textarea_contacts'); ?>
+            </div>
+<?php endif;   ?>			
+	
 	</div>
 </article>

@@ -46,11 +46,15 @@
 	
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
-	</nav>		
-		<div class="site-logo">
-		<?php the_custom_logo(); ?>			
-<img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
-		</div>
+	</nav>
+		<div class="custom-header">
+			<img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
+			
+			<div class="site-logo">
+				<?php the_custom_logo(); ?>	
+			</div>				
+		</div>		
+		
 </header>
 <main>
 
