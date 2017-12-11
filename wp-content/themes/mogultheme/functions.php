@@ -91,6 +91,8 @@ function mogultheme_setup() {
 	 */
 	add_theme_support( 'title-tag' );
 
+	add_theme_support( 'post-thumbnails' );
+
 	// Add theme support for Custom Logo.
 	add_theme_support( 'custom-logo', array(
 		'width'       => 1155,

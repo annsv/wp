@@ -25,24 +25,43 @@ get_header(); ?>
 			wp_reset_postdata(); ?>
 
 			<?php 
-
+			//$terms = array('beauty','bridal','fashion','candid');
 			$args = array(
     			'post_type'=> 'portfolio',
+    			'nopaging' => 'true',
+    			'order' => 'DESC',
+
+    			'tax_query' => array(
+					'relation' => 'AND',
+					array(
+						'taxonomy' => 'portfolio_category',
+						'field'    => 'slug',
+						'terms'    => array('beauty','bridal','fashion','candid'),
+					),
+    			
+				)		
     		);              
 
 			$portfolio = new WP_Query( $args );
-			
+			//var_dump($portfolio);
 			if($portfolio->have_posts() ) : ?>
 
 				<div class="container">
 					<div class="row">
 
+
+
+<?php
+$description = term_description();
+echo $description;
+?>						
+
 				<?php while ( $portfolio->have_posts() ) : $portfolio->the_post(); ?>
 
-					<div class="col-md-12">
+					<div class="col-md-20">
 						<div class="portfolio-content">
-							<?php the_title();?>
-							<?php the_content();?>
+							<?php //the_title();?>
+							<?php the_post_thumbnail(); ?>
 						</div>
 					</div>
 			
