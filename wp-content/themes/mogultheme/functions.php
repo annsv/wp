@@ -131,23 +131,14 @@ add_action( 'after_setup_theme', 'mogultheme_setup' );
  */
 function mogultheme_scripts() {
 
-    //Colorbox stylesheet
-    wp_enqueue_style( 'colorbox', get_template_directory_uri() . 
-    '/colorbox/colorbox.css' );
-
 	// Theme stylesheet.
 	wp_enqueue_style( 'mogultheme-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/bootstrap/assets/javascripts/bootstrap.min.js', array('jquery'), '3.7.7', true );
-     
-    //Colorbox jQuery plugin js file
-    wp_enqueue_script( 'colorbox', get_template_directory_uri() . 
-    '/colorbox/jquery.colorbox-min.js', array( 'jquery'   ), '', true );
-    
-    //Add main.js file
+	//Add script.js file
     wp_enqueue_script( 'themeslug-script', get_template_directory_uri() . 
-    '/js/script.js', array( 'colorbox' ), '', true );
-      
+    '/js/script.js', array( 'jquery' ), '', true );
+          
 }
 add_action( 'wp_enqueue_scripts', 'mogultheme_scripts' );
 
@@ -259,7 +250,39 @@ add_action( 'customize_register', 'mogultheme_customize_register' );
 function mogultheme_is_static_front_page() {
 	return ( is_front_page() && ! is_home() );
 }
-  
+
+//Get Portfolio Navigation (show 4 terms)
+function get_portfolio_nav()
+{
+    $terms = get_terms('portfolio_category');
+    $filters_html = false;
+ 
+    if( $terms ):
+        $filters_html = '<ul>';
+ 
+        foreach( $terms as $term )
+        {
+            $term_id = $term->term_id;
+            $term_name = $term->name;
+ 
+            $filters_html .= '<li class="term_id_'.$term_id.'">'.$term_name.'<input type="radio" name="portfolio_nav[]" value="'.$term_id.'"></li>';
+        }
+        $filters_html .= '</ul>';
+ 
+        return $filters_html;
+    endif;
+}  
+
+//Enqueue Ajax 
+function enqueue_portfolio_ajax_scripts() {
+    wp_register_script( 'portfolio-ajax-js', get_bloginfo('template_url') . '/js/portfolio.js', array( 'jquery' ), '', true );
+    wp_localize_script( 'portfolio-ajax-js', 'ajax_portfolio_params', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
+    wp_enqueue_script( 'portfolio-ajax-js' );
+}
+add_action('wp_enqueue_scripts', 'enqueue_portfolio_ajax_scripts');
+
+
+
 
 /**
  * Used by hook: 'customize_preview_init'
@@ -277,3 +300,7 @@ function mogultheme_customizer_live_preview()
 	);
 }
 add_action( 'customize_preview_init', 'mogultheme_customizer_live_preview' );
+
+// html in term description
+remove_filter('pre_term_description', 'wp_filter_kses');
+remove_filter('pre_term_description', 'wp_kses_data');

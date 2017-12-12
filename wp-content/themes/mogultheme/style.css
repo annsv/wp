@@ -5572,9 +5572,13 @@ footer {
 .portfolio .container {
   max-width: 1540px; }
 
-.portfolio-content img {
-  max-width: 100%;
-  height: auto; }
+.portfolio-content {
+  padding: 10px 0; }
+  .portfolio-content a {
+    display: block; }
+  .portfolio-content img {
+    max-width: 100%;
+    height: auto; }
 
 .col-xs-20,
 .col-sm-20,
