@@ -299,7 +299,8 @@ footer{
 .portfolio{
 	.container{max-width:1540px}	
 	&-content{
-	
+	    padding: 10px 0;
+	a{display:block;}
 	img{
 		max-width:100%;
 		height:auto;
