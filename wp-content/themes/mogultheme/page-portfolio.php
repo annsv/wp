@@ -14,19 +14,15 @@ get_header(); ?>
 
 <div class="portfolio-page">
 
-			<h1>
-				<?php the_title(); ?>
-			</h1>
+			<?php the_title('<h1>', '</h1>'); ?>
 
-			<div id="portfolio-nav">
+			<div class="container portfolio-nav">
 			    <?php echo get_portfolio_nav(); ?>
 			</div>
 
-			<div id="portfolio-results"></div>
-			<?php 
-			//$terms = array('beauty','bridal','fashion','candid');
-			//Beauty
-			$args = array(
+			<div id="portfolio-results">
+				
+			<?php $args = array(
     			'post_type'=> 'portfolio',
     			'nopaging' => 'true',
     			'order' => 'ASC',
@@ -34,48 +30,45 @@ get_header(); ?>
     			'tax_query' => array(
 					array(
 						'taxonomy' => 'portfolio_category',
-						'field'    => 'slug',
-						'terms'    => 'beauty',
+						'field'    => 'term_id',
+						'terms'    => 12,
 					),
     			
 				)		
     		);              
 
 			$portfolio = new WP_Query( $args );
-			//var_dump($portfolio);
-			if($portfolio->have_posts() ) : ?>
 
-				<div class="container">
-					<div class="row">
+			if($portfolio->have_posts() ) : 
+
+				echo '<div class="container"><div class="row">';
 			
 
-				<?php while ( $portfolio->have_posts() ) : $portfolio->the_post(); ?>
+				while ( $portfolio->have_posts() ) : $portfolio->the_post(); 
 
-					<div class="col-md-20">
-						<div class="portfolio-content">
-							<?php //the_title();?>
-							<a href="<?php the_post_thumbnail_url('large'); ?>" class="popup"><?php the_post_thumbnail(); ?></a>
-
-						</div>
-					</div>
+					echo '<div class="col-md-20">';
+					echo '<div class="portfolio-content">';
+					$large_img_url = get_the_post_thumbnail_url($portfolio->ID,"large");
+					$thumb_url = get_the_post_thumbnail($portfolio->ID);
+					echo '<a href="'.$large_img_url.'" class="popup">'.$thumb_url.'</a>';
+					echo '</div></div>';
 			
-				<?php endwhile; ?>
+				endwhile; 
 			
-					</div>
-				</div>
+				echo '</div></div>';
 			
-			<? endif;
+			endif;
 
 			wp_reset_postdata(); 
 
 			$description = get_term_field( 'description', 12, 'portfolio_category' );  
 			if( is_wp_error( $description ) ) {
-				 echo 'описание термина не найдено';
-			} else { ?>
-				 <div class="container">
-				 <?php echo $description;?>
-					</div>
-			<?php } ?>
+				 echo 'description is empty';
+			} else { 
+				 echo  '<div class="container">'.$description.'</div>';
+			} ?>				
+			</div>
+
 
 
 <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="portfolio-image" aria-hidden="true">

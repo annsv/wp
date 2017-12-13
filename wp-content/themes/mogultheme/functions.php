@@ -136,7 +136,7 @@ function mogultheme_scripts() {
 
 	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/bootstrap/assets/javascripts/bootstrap.min.js', array('jquery'), '3.7.7', true );
 	//Add script.js file
-    wp_enqueue_script( 'themeslug-script', get_template_directory_uri() . 
+    wp_enqueue_script( 'mogultheme-script', get_template_directory_uri() . 
     '/js/script.js', array( 'jquery' ), '', true );
           
 }
@@ -149,51 +149,6 @@ function mogultheme_customize_register( $wp_customize ) {
 		'title'    => __( 'Theme Options', 'mogultheme' ),
 		'priority' => 130, // Before Additional CSS.
 	) );
-/*
-	$wp_customize->add_setting( 'page_layout', array(
-		'default'           => 'two-column',
-		'sanitize_callback' => 'mogultheme_sanitize_page_layout',
-		'transport'         => 'postMessage',
-	) );
-
-	$wp_customize->add_control( 'page_layout', array(
-		'label'       => __( 'Page Layout', 'mogultheme' ),
-		'section'     => 'theme_options',
-		'type'        => 'radio',
-		//'active_callback' => 'mogultheme_is_view_with_layout_option',
-	) );
-
-	//Filter number of front page sections in Twenty Seventeen.
-
-	$num_sections = apply_filters( 'mogultheme_front_page_sections', 4 );
-
-	// Create a setting and control for each of the sections available in the theme.
-	for ( $i = 1; $i < ( 1 + $num_sections ); $i++ ) {
-		$wp_customize->add_setting( 'panel_' . $i, array(
-			'default'           => false,
-			'sanitize_callback' => 'absint',
-			'transport'         => 'postMessage',
-		) );
-
-		$wp_customize->add_control( 'panel_' . $i, array(
-			// translators: %d is the front page section number 
-			'label'          => sprintf( __( 'Front Page Section %d Content', 'mogultheme' ), $i ),
-			'description'    => ( 1 !== $i ? '' : __( 'Select pages to feature in each area from the dropdowns. Add an image to a section by setting a featured image in the page editor. Empty sections will not be displayed.', 'mogultheme' ) ),
-			'section'        => 'theme_options',
-			'type'           => 'dropdown-pages',
-			'allow_addition' => true,
-			'active_callback' => 'mogultheme_is_static_front_page',
-		) );
-
-		$wp_customize->selective_refresh->add_partial( 'panel_' . $i, array(
-			'selector'            => '#panel' . $i,
-			'render_callback'     => 'mogultheme_front_page_section',
-			'container_inclusive' => true,
-		) );
-	}
-*/
-
-
 				$wp_customize->add_setting( 'mogultheme_textarea_home1', array(
 				  'capability' => 'edit_theme_options',
 				  'default' => 'Lorem Ipsum Dolor Sit amet',
@@ -233,8 +188,6 @@ function mogultheme_customize_register( $wp_customize ) {
 				) );
 
 
-
-
  	// Sanitize text
 	function sanitize_text( $text ) {
 	    return sanitize_text_field( $text );
@@ -265,7 +218,7 @@ function get_portfolio_nav()
             $term_id = $term->term_id;
             $term_name = $term->name;
  
-            $filters_html .= '<li class="term_id_'.$term_id.'">'.$term_name.'<input type="radio" name="portfolio_nav[]" value="'.$term_id.'"></li>';
+            $filters_html .= '<li class="term-item" id="'.$term_id.'">'.$term_name.'</li>';
         }
         $filters_html .= '</ul>';
  
@@ -275,13 +228,67 @@ function get_portfolio_nav()
 
 //Enqueue Ajax 
 function enqueue_portfolio_ajax_scripts() {
-    wp_register_script( 'portfolio-ajax-js', get_bloginfo('template_url') . '/js/portfolio.js', array( 'jquery' ), '', true );
-    wp_localize_script( 'portfolio-ajax-js', 'ajax_portfolio_params', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
-    wp_enqueue_script( 'portfolio-ajax-js' );
+
+    wp_enqueue_script( 'mogultheme-script' );
+    wp_localize_script( 'mogultheme-script', 'my_ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
+
 }
 add_action('wp_enqueue_scripts', 'enqueue_portfolio_ajax_scripts');
 
+//Add Ajax Actions
+add_action('wp_ajax_ajaxSelectPortfolio', 'ajaxSelectPortfolio');
+add_action('wp_ajax_nopriv_ajaxSelectPortfolio', 'ajaxSelectPortfolio');
+function ajaxSelectPortfolio()
+{
 
+			$args = array(
+    			'post_type'=> 'portfolio',
+    			'nopaging' => 'true',
+    			'order' => 'ASC',
+
+    			'tax_query' => array(
+					array(
+						'taxonomy' => 'portfolio_category',
+						'field'    => 'term_id',
+						'terms'    => $_POST['id'],
+					),
+    			
+				)		
+    		);              
+
+			$portfolio = new WP_Query( $args );
+
+			if($portfolio->have_posts() ) : 
+
+				echo '<div class="container"><div class="row">';
+			
+
+				while ( $portfolio->have_posts() ) : $portfolio->the_post(); 
+
+					echo '<div class="col-md-20">';
+					echo '<div class="portfolio-content">';
+					$large_img_url = get_the_post_thumbnail_url($portfolio->ID,"large");
+					$thumb_url = get_the_post_thumbnail($portfolio->ID);
+					echo '<a href="'.$large_img_url.'" class="popup">'.$thumb_url.'</a>';
+					echo '</div></div>';
+			
+				endwhile; 
+			
+				echo '</div></div>';
+			
+			endif;
+
+			wp_reset_postdata(); 
+			$description = get_term_field( 'description', $_POST['id'], 'portfolio_category','raw' );  
+			if( is_wp_error( $description ) ) {
+				 echo 'description is empty';
+			} else { 
+				echo  '<div class="container">'. $description .'</div>';
+				
+			} 
+	
+	die();
+}
 
 
 /**

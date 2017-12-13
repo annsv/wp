@@ -5580,6 +5580,22 @@ footer {
     max-width: 100%;
     height: auto; }
 
+.portfolio-nav {
+  padding: 10px 0;
+  text-align: center; }
+  .portfolio-nav ul {
+    margin: 0;
+    padding: 0; }
+    .portfolio-nav ul li {
+      display: inline-block;
+      padding: 15px;
+      cursor: pointer;
+      text-transform: uppercase; }
+      .portfolio-nav ul li:hover, .portfolio-nav ul li:focus, .portfolio-nav ul li:active {
+        opacity: 0.8; }
+    .portfolio-nav ul .active {
+      opacity: 0.8; }
+
 .col-xs-20,
 .col-sm-20,
 .col-md-20,
