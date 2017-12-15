@@ -205,13 +205,12 @@ function mogultheme_is_static_front_page() {
 }
 
 //Get Portfolio Navigation (show 4 terms)
-function get_portfolio_nav()
-{
+function get_portfolio_nav(){
     $terms = get_terms('portfolio_category');
     $filters_html = false;
  
     if( $terms ):
-        $filters_html = '<ul>';
+        $filters_html = '<ul id="portfolio-nav">';
  
         foreach( $terms as $term )
         {
@@ -225,6 +224,27 @@ function get_portfolio_nav()
         return $filters_html;
     endif;
 }  
+
+//Get Portfolio Navigation (show 4 terms)
+function get_services_nav(){
+    $terms = get_terms('services_category');
+    $filters_html = false;
+ 
+    if( $terms ):
+        $filters_html = '<ul id="services-nav">';
+ 
+        foreach( $terms as $term )
+        {
+            $term_id = $term->term_id;
+            $term_name = $term->name;
+ 
+            $filters_html .= '<li class="term-item" id="'.$term_id.'">'.$term_name.'</li>';
+        }
+        $filters_html .= '</ul>';
+ 
+        return $filters_html;
+    endif;
+}
 
 //Enqueue Ajax 
 function enqueue_portfolio_ajax_scripts() {
@@ -290,6 +310,54 @@ function ajaxSelectPortfolio()
 	die();
 }
 
+
+add_action('wp_ajax_ajaxSelectServices', 'ajaxSelectServices');
+add_action('wp_ajax_nopriv_ajaxSelectServices', 'ajaxSelectServices');
+function ajaxSelectServices()
+{
+
+			$args = array(
+    			'post_type'=> 'service',
+    			'nopaging' => 'true',
+    			'order' => 'ASC',
+
+    			'tax_query' => array(
+					array(
+						'taxonomy' => 'services_category',
+						'field'    => 'term_id',
+						'terms'    => $_POST['id'],
+					),
+    			
+				)		
+    		);              
+
+			$services = new WP_Query( $args );
+
+			if($services->have_posts() ) : 
+
+				echo '<div class="container"><div class="row">';
+			
+
+				while ( $services->have_posts() ) : $services->the_post(); 
+
+					echo '<div class="col-md-4">';
+					echo '<div class="service-content">';
+					echo '<p class="service-name">'.get_field('service_name').'</p>';
+					echo '<p class="service-price">'.get_field('service_price').'</p>';
+					echo '<div class="service-description">'.get_field('service_description').'</div>';					
+					echo '</div></div>';
+			
+				endwhile; 
+			
+				echo '</div></div>';
+			
+			endif;
+
+			wp_reset_postdata(); 
+
+	
+	die();
+}
 
 /**
  * Used by hook: 'customize_preview_init'

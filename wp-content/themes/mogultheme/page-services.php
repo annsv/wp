@@ -2,7 +2,7 @@
 /**
  * Template name: Services
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package WordPress
  * @subpackage MogulTheme
@@ -12,62 +12,74 @@
 
 get_header(); ?>
 
-<div class="services-page">
-<?php
-		if ( have_posts() ) : 
+<div class="content services-page">
 
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+			<?php the_title('<h1>', '</h1>'); ?>
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', 'page' );
+			<div class="container category-nav">
+			    <?php echo get_services_nav(); ?>
+			</div>
 
-			endwhile; 
-			wp_reset_postdata(); ?>
+			<div id="services-result">
+				
+			<?php $args = array(
+    			'post_type'=> 'service',
+    			'nopaging' => 'true',
+    			'order' => 'ASC',
 
-			<?php 
-
-			$args = array(
-    			'post_type'=> 'services',
+    			'tax_query' => array(
+					array(
+						'taxonomy' => 'services_category',
+						'field'    => 'term_id',
+						'terms'    => 16,
+					),
+    			
+				)		
     		);              
 
 			$services = new WP_Query( $args );
-			
-			if($services->have_posts() ) : ?>
 
-				<div class="container">
-					<div class="row">
+			if($services->have_posts() ) : 
 
-				<?php while ( $services->have_posts() ) : $services->the_post(); ?>
+				echo '<div class="container"><div class="row">';
+			
 
-					<div class="col-md-6">
-						<div class="services-text">
-							<?php the_title();?>,<?php the_field('services_text');?>
-						</div>
+				while ( $services->have_posts() ) : $services->the_post(); 
 
-						<div class="reviewer-info">
-							<div class="reviewer-name"><?php the_field('reviewer_name');?></div>
-						<div class="reviewer-location"><?php the_field('reviewer_location');?></div>
-						</div>
-					</div>
+					echo '<div class="col-md-4">';
+					echo '<div class="service-content">';
+					echo '<p class="service-name">'.get_field('service_name').'</p>';
+					echo '<p class="service-price">'.get_field('service_price').'</p>';
+					echo '<div class="service-description">'.get_field('service_description').'</div>';					
+					echo '</div></div>';
 			
-			<?php	endwhile; ?>
+				endwhile; 
 			
-					</div>
-				</div>
+				echo '</div></div>';
 			
-			<? endif;
+			endif;
 
 			wp_reset_postdata(); 
-		else :
+			?>
+			</div>	
+			<div class="container service-examples">
+				<?php the_content();?>
+			</div>
+						
 
-			get_template_part( 'template-parts/content', 'none' );
 
-		endif; ?>
 
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="services-image" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">              
+      <div class="modal-body">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
+</div>
+      
 </div>
 <?php get_footer();

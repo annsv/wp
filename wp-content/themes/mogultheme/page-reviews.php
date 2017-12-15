@@ -17,7 +17,7 @@
 
 get_header(); ?>
 
-<div class="reviews-page">
+<div class="content reviews-page">
 <?php
 		if ( have_posts() ) : 
 

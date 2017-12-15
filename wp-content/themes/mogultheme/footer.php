@@ -24,12 +24,12 @@
 			<aside class="widget-area" role="complementary" aria-label="<?php esc_attr_e( 'Footer', 'twentyseventeen' ); ?>">
 				<?php
 				if ( is_active_sidebar( 'sidebar-2' ) ) { ?>
-					<div class="footer-subscription col-md-3 pull-left">
+					<div class="footer-subscription col-md-4 pull-left">
 						<?php dynamic_sidebar( 'sidebar-2' ); ?>
 					</div>
 				<?php }
 				if ( is_active_sidebar( 'sidebar-3' ) ) { ?>
-					<div class="footer-contacts col-md-5">
+					<div class="footer-contacts col-md-4">
 						<?php dynamic_sidebar( 'sidebar-3' ); ?>
 					</div>
 				<?php }

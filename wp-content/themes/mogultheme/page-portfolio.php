@@ -12,15 +12,15 @@
 
 get_header(); ?>
 
-<div class="portfolio-page">
+<div class="content portfolio-page">
 
 			<?php the_title('<h1>', '</h1>'); ?>
 
-			<div class="container portfolio-nav">
+			<div class="container category-nav">
 			    <?php echo get_portfolio_nav(); ?>
 			</div>
 
-			<div id="portfolio-results">
+			<div id="portfolio-result">
 				
 			<?php $args = array(
     			'post_type'=> 'portfolio',
