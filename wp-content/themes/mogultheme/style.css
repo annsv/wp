@@ -5626,6 +5626,16 @@ footer {
   padding-right: 10px;
   padding-left: 10px; }
 
+.review-item {
+  margin-bottom: 20px; }
+
+.loadmore {
+  margin: 15px auto;
+  width: 300px;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ccc; }
+
 .blog .container {
   max-width: 1680px; }
 

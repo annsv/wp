@@ -10,7 +10,7 @@
       return false;
     });
 
-
+//categories menu on portfolio and services pages
     $('.term-item').on('click', function(e) {
         if ($(this).siblings('.term-item').hasClass('active')) {  
             $(this).siblings('.term-item').removeClass('active')
@@ -48,6 +48,20 @@
       });
 
     });
+
+//ajax load more function
+var page = 2;
+  $('body').on('click', '.loadmore', function() {
+    var data = {
+      'action': 'load_reviews_by_ajax',
+      'page': page
+    };
+
+    $.post(my_ajax_object.ajax_url, data, function(response) {
+      $('.reviews-block').append(response);
+      page++;
+    });
+  });    
 
  
       

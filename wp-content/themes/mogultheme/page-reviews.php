@@ -2,11 +2,6 @@
 /**
  * Template name: Reviews
  *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package WordPress
@@ -24,11 +19,6 @@ get_header(); ?>
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
 				get_template_part( 'template-parts/content', 'page' );
 
 			endwhile; 
@@ -38,6 +28,9 @@ get_header(); ?>
 
 			$args = array(
     			'post_type'=> 'reviews',
+        		'post_status' => 'publish',    			
+        		'posts_per_page' => '10',    			
+        		'paged' => 1,    			
     		);              
 
 			$reviews = new WP_Query( $args );
@@ -46,28 +39,29 @@ get_header(); ?>
 
 				<div class="container">
 					<div class="row">
+						<div class="reviews-block">		
+						<?php while ( $reviews->have_posts() ) : $reviews->the_post(); ?>
 
-				<?php while ( $reviews->have_posts() ) : $reviews->the_post(); ?>
+							<div class="col-md-6 review-item">
+								<div class="review-text">
+									<?php the_title();?>,<?php the_field('review_text');?>
+								</div>
 
-					<div class="col-md-6">
-						<div class="review-text">
-							<?php the_title();?>,<?php the_field('review_text');?>
-						</div>
-
-						<div class="reviewer-info">
-							<div class="reviewer-name"><?php the_field('reviewer_name');?></div>
-						<div class="reviewer-location"><?php the_field('reviewer_location');?></div>
-						</div>
-					</div>
-			
-			<?php	endwhile; ?>
-			
+								<div class="reviewer-info">
+									<div class="reviewer-name"><?php the_field('reviewer_name');?></div>
+								<div class="reviewer-location"><?php the_field('reviewer_location');?></div>
+								</div>
+							</div>
+					
+						<?php	endwhile; ?>
+						</div>			
 					</div>
 				</div>
 			
-			<? endif;
+			<?php endif; ?>
+			<div class="loadmore">Load More</div>
 
-			wp_reset_postdata(); 
+			<?php wp_reset_postdata(); 
 		else :
 
 			get_template_part( 'template-parts/content', 'none' );

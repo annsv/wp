@@ -359,6 +359,37 @@ function ajaxSelectServices()
 	die();
 }
 
+/*Load reviews function*/
+add_action('wp_ajax_load_reviews_by_ajax', 'load_reviews_by_ajax');
+add_action('wp_ajax_nopriv_load_reviews_by_ajax', 'load_reviews_by_ajax');
+function load_reviews_by_ajax() {
+	$paged = $_POST['page'];
+		$args = array(
+    		'post_type'=> 'reviews',
+        	'posts_per_page' => '10',    			
+			'paged' => $paged,			
+    	);
+	$reviews = new WP_Query( $args );
+	if ( $reviews->have_posts() ) :
+		?>
+		<?php while ( $reviews->have_posts() ) : $reviews->the_post() ?>
+			<div class="col-md-6">
+				<div class="review-text">
+					<?php the_title();?>,<?php the_field('review_text');?>
+				</div>
+
+				<div class="reviewer-info">
+					<div class="reviewer-name"><?php the_field('reviewer_name');?></div>
+				<div class="reviewer-location"><?php the_field('reviewer_location');?></div>
+				</div>
+			</div>
+		<?php endwhile ?>
+		<?php
+	endif;
+
+	wp_die();
+}
+
 /**
  * Used by hook: 'customize_preview_init'
  * 
