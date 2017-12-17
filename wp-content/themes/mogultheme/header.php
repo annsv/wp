@@ -23,7 +23,7 @@
 
 <?php wp_head(); ?>
 </head>
-<body>
+<body <?php body_class(); ?>>
 <header>
 	<nav class="navbar navbar-default top-menu" id="site-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Top Menu', 'mogultheme' ); ?>">
 	  <div class="container-fluid">
@@ -47,7 +47,7 @@
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
-		<div class="custom-header">
+		<div class="custom-header<?php if (!is_front_page()) echo ' inner-header'; ?>">
 			<img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
 			
 			<div class="site-logo">

@@ -16,15 +16,7 @@ get_header(); ?>
 <?php
 		if ( have_posts() ) : 
 
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
-
-				get_template_part( 'template-parts/content', 'page' );
-
-			endwhile; 
-			wp_reset_postdata(); ?>
-
-			<?php 
+	    	 the_title( '<h1>', '</h1>' ); 
 
 			$args = array(
     			'post_type'=> 'reviews',
@@ -42,14 +34,16 @@ get_header(); ?>
 						<div class="reviews-block">		
 						<?php while ( $reviews->have_posts() ) : $reviews->the_post(); ?>
 
-							<div class="col-md-6 review-item">
-								<div class="review-text">
-									<?php the_title();?>,<?php the_field('review_text');?>
-								</div>
+							<div class="col-md-6">
+								<div class="review-item">
+									<div class="review-text">
+										<span class="review-title"><?php the_title();?></span>, <?php the_field('review_text');?>
+									</div>
 
-								<div class="reviewer-info">
-									<div class="reviewer-name"><?php the_field('reviewer_name');?></div>
-								<div class="reviewer-location"><?php the_field('reviewer_location');?></div>
+									<div class="reviewer-info">
+										<div class="reviewer-name"><?php the_field('reviewer_name');?></div>
+									<div class="reviewer-location"><?php the_field('reviewer_location');?></div>
+									</div>
 								</div>
 							</div>
 					
@@ -59,7 +53,34 @@ get_header(); ?>
 				</div>
 			
 			<?php endif; ?>
+				<div class="bubblingG">
+					<span id="bubblingG_1">
+					</span>
+					<span id="bubblingG_2">
+					</span>
+					<span id="bubblingG_3">
+					</span>
+				</div>			
 			<div class="loadmore">Load More</div>
+
+<a href="#" class="review-button"></a>
+
+<div class="review-callaction-message">
+
+			<?php
+			while ( have_posts() ) : the_post();?>
+
+				<div class="content"><?php the_content();?></div>
+
+			<?php endwhile; 
+			wp_reset_postdata(); ?>
+</div>
+<div class="reviews-logo-block">
+	<div class="reviews-logo-item"></div>
+	<div class="reviews-logo-item"></div>
+	<div class="reviews-logo-item"></div>
+	<div class="reviews-logo-item"></div>
+</div>
 
 			<?php wp_reset_postdata(); 
 		else :

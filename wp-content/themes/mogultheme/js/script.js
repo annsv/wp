@@ -29,6 +29,7 @@
         var id = $(this).attr('id');
         $(this).addClass('active');
         //console.log(id);
+        $('.bubblingG').show();
 
       $.ajax({
          url: my_ajax_object.ajax_url,
@@ -38,9 +39,9 @@
             id: id
             },
          success: function( data ){
-               console.log("successfully");
-               console.log(data);
-               result.html(data);
+            console.log("successfully");
+            result.html(data);
+            $('.bubblingG').hide();
          },
          error: function ( error ) {
             console.log( error );
@@ -56,13 +57,17 @@ var page = 2;
       'action': 'load_reviews_by_ajax',
       'page': page
     };
+    $('.bubblingG').show();
 
-    $.post(my_ajax_object.ajax_url, data, function(response) {
-      $('.reviews-block').append(response);
-      page++;
-    });
-  });    
-
+    $.post(
+      my_ajax_object.ajax_url, 
+      data, 
+      function(response) {
+        $('.reviews-block').append(response);
+        page++;
+        $('.bubblingG').hide();
+      });
+    });    
  
       
 })(jQuery);

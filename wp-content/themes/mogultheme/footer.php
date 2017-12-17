@@ -13,6 +13,7 @@
  */
 
 ?>
+
 <footer>
 	<div class="container-fluid footer">
 
@@ -21,20 +22,20 @@
 	is_active_sidebar( 'sidebar-4' ) ) :
 		?>
 
-			<aside class="widget-area" role="complementary" aria-label="<?php esc_attr_e( 'Footer', 'twentyseventeen' ); ?>">
+			<aside class="widget-area" role="complementary" aria-label="<?php esc_attr_e( 'Footer', 'mogultheme' ); ?>">
 				<?php
 				if ( is_active_sidebar( 'sidebar-2' ) ) { ?>
-					<div class="footer-subscription col-md-4 pull-left">
+					<div class="footer-subscription col-md-4 col-lg-3 pull-left">
 						<?php dynamic_sidebar( 'sidebar-2' ); ?>
 					</div>
 				<?php }
 				if ( is_active_sidebar( 'sidebar-3' ) ) { ?>
-					<div class="footer-contacts col-md-4">
+					<div class="footer-contacts col-md-4 col-lg-6">
 						<?php dynamic_sidebar( 'sidebar-3' ); ?>
 					</div>
 				<?php }
 				if ( is_active_sidebar( 'sidebar-4' ) ) { ?>
-					<div class="footer-social col-md-4 pull-right">
+					<div class="footer-social col-md-4 col-lg-3 pull-right">
 						<?php dynamic_sidebar( 'sidebar-4' ); ?>
 					</div>
 				<?php } ?>				

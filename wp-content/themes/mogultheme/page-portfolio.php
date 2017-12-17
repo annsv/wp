@@ -19,7 +19,14 @@ get_header(); ?>
 			<div class="container category-nav">
 			    <?php echo get_portfolio_nav(); ?>
 			</div>
-
+<div class="bubblingG">
+	<span id="bubblingG_1">
+	</span>
+	<span id="bubblingG_2">
+	</span>
+	<span id="bubblingG_3">
+	</span>
+</div>
 			<div id="portfolio-result">
 				
 			<?php $args = array(
