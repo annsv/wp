@@ -29,9 +29,9 @@ get_header(); ?>
       <?php echo do_shortcode( '[contact-form-7 id="173" title="Leave a review"]' ); ?>
     </div>
   </div>
-<div class="pull-right">
-<a data-toggle="pill" href="#form2">form 2</a>
-<a data-toggle="pill" href="#form3">form 3</a>
+<div class="buttons-block">
+<a class="book-button callform" data-toggle="pill" href="#form2"></a>
+<a class="review-button callform" data-toggle="pill" href="#form3"></a>
 </div>
 		</div>
 	</div>

@@ -23,7 +23,7 @@
 
 <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
+<body <?php //body_class(); ?>>
 <header>
 	<nav class="navbar navbar-default top-menu" id="site-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Top Menu', 'mogultheme' ); ?>">
 	  <div class="container-fluid">
@@ -34,7 +34,7 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand book-button" href="#"></a>
+	      <a class="navbar-brand book-button top-button" href="#"></a>
 	    </div>
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 

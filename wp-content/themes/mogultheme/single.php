@@ -16,7 +16,7 @@ get_header(); ?>
 	<div class="container">
 		<section id="primary" class="col-md-9">	
 			<?php while ( have_posts() ) : the_post(); ?>
-					<?php get_template_part( 'template-parts/content','blog' ); ?>
+					<?php get_template_part( 'template-parts/content' ); ?>
 				<?php
 					// If comments are open or we have at least one comment, load up the comment template
 					if ( comments_open() || '0' != get_comments_number() )
@@ -25,7 +25,7 @@ get_header(); ?>
 	
 			<?php endwhile; // end of the loop. ?>	
 
-</section>	
+		</section>	
 	<?php get_sidebar(); ?>
 </div><!-- .wrap -->
 </div>

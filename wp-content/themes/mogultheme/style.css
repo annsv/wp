@@ -5475,13 +5475,29 @@ header .top-menu {
   header .top-menu .navbar-nav {
     padding-left: 30px; }
 
-header .book-button {
+.book-button {
   background-image: url(img/sprite.png);
   background-repeat: no-repeat;
   background-position: -134px 0px;
-  margin: 18px 0 -140px 22px !important;
   width: 186px;
-  height: 186px; }
+  height: 186px;
+  display: block; }
+
+.top-button {
+  margin: 18px 0 -140px 22px !important; }
+
+.review-button.callform {
+  position: absolute;
+  top: 0;
+  right: 0; }
+
+.book-button.callform {
+  position: absolute;
+  right: 10%;
+  top: -200px; }
+
+.buttons-block {
+  position: relative; }
 
 .container.content-on-main {
   max-width: 974px;
@@ -5825,7 +5841,7 @@ footer {
       .blog #secondary ul li {
         margin: 15px 0; }
 
-input[type=submit] {
+.wpcf7 input[type=submit] {
   background-image: url(img/sprite.png);
   background-position: -1px 0px;
   border: none;
