@@ -49,6 +49,53 @@
       });
 
     });
+//load pages with forms on contact page
+/*
+    $('.term-item').on('click', function(e) {
+        if ($(this).siblings('.term-item').hasClass('active')) {  
+            $(this).siblings('.term-item').removeClass('active')
+        }
+        var actionSelect,result,parentId;
+        parentId = $(this).closest('ul').attr('id');
+        if (parentId==='services-nav'){
+          actionSelect = 'ajaxSelectServices';
+          result = $('#services-result');
+          //console.log('result');
+        } else {
+          actionSelect = 'ajaxSelectPortfolio';
+          result =$('#portfolio-result');
+        }
+                    
+        var id = $(this).attr('id');
+        $(this).addClass('active');
+        //console.log(id);
+        $('.bubblingG').show();
+
+      $.ajax({
+         url: my_ajax_object.ajax_url,
+         type: 'POST',
+         data: {
+            action: actionSelect,
+            id: id
+            },
+         success: function( data ){
+            console.log("successfully");
+            result.html(data);
+            $('.bubblingG').hide();
+         },
+         error: function ( error ) {
+            console.log( error );
+         }
+      });
+
+    });
+    */
+
+
+
+
+
+
 
 //ajax load more function
 var page = 2;

@@ -142,7 +142,6 @@ function mogultheme_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'mogultheme_scripts' );
 
-
 function mogultheme_customize_register( $wp_customize ) {
 
 	$wp_customize->add_section( 'theme_options', array(
@@ -186,6 +185,26 @@ function mogultheme_customize_register( $wp_customize ) {
 				  'label' => __( 'Custom Text Area 2' ),
 				  'description' => __( 'This is a custom textarea.' ),
 				) );
+
+$wp_customize->add_setting( 'mogultheme_dropdownpages_setting_id', array(
+  'capability' => 'edit_theme_options',
+  'sanitize_callback' => 'mogultheme_sanitize_dropdown_pages',
+) );
+
+$wp_customize->add_control( 'mogultheme_dropdownpages_setting_id', array(
+  'type' => 'dropdown-pages',
+  'section' => 'theme_options', 
+  'label' => __( 'Custom Dropdown Pages' ),
+  'description' => __( 'This is a custom dropdown pages option.' ),
+) );
+
+function mogultheme_sanitize_dropdown_pages( $page_id, $setting ) {
+  // Ensure $input is an absolute integer.
+  $page_id = absint( $page_id );
+
+  // If $page_id is an ID of a published page, return it; otherwise, return the default.
+  return ( 'publish' == get_post_status( $page_id ) ? $page_id : $setting->default );
+}
 
 
  	// Sanitize text
@@ -358,6 +377,24 @@ function ajaxSelectServices()
 	
 	die();
 }
+/*Load contact forms by click*/
+add_action('wp_ajax_load_forms', 'load_forms');
+add_action('wp_ajax_nopriv_load_forms', 'load_forms');
+function load_forms() {
+    // 
+
+    $page_link = new WP_Query( 'pagename=about' );
+    // "loop" through query (even though it's just one page) 
+    while ( $page_link->have_posts() ) : $page_link->the_post();
+        the_content();
+    endwhile;
+    // reset post data (important!)
+    wp_reset_postdata();
+	
+	wp_die();
+}
+
+
 
 /*Load reviews function*/
 add_action('wp_ajax_load_reviews_by_ajax', 'load_reviews_by_ajax');

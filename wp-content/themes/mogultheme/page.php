@@ -17,10 +17,11 @@
 
 get_header(); ?>
 <?php
-		if ( have_posts() ) :
+		if ( have_posts() ) : ?>
+		<div class="content">		
 
 
-			/* Start the Loop */
+		<?php	/* Start the Loop */
 			while ( have_posts() ) : the_post();
 
 				/*
@@ -38,6 +39,6 @@ get_header(); ?>
 			get_template_part( 'template-parts/content', 'none' );
 
 		endif; ?>
-
+		</div>
 </main>
 <?php get_footer();

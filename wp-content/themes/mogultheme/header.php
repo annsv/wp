@@ -34,7 +34,13 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand book-button top-button" href="#"></a>
+<? if( get_theme_mod( 'mogultheme_dropdownpages_setting_id') != "" ): 
+	$book_page_id = get_theme_mod( 'mogultheme_dropdownpages_setting_id');?>
+        	      <a class="navbar-brand book-button top-button" href="<?php echo get_page_link($book_page_id); ?>"></a>    
+                
+            
+<?php endif;   ?>		      
+
 	    </div>
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
