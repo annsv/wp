@@ -148,55 +148,78 @@ function mogultheme_customize_register( $wp_customize ) {
 		'title'    => __( 'Theme Options', 'mogultheme' ),
 		'priority' => 130, // Before Additional CSS.
 	) );
-				$wp_customize->add_setting( 'mogultheme_textarea_home1', array(
+				$wp_customize->add_setting( 'mogultheme_text_facebook', array(
 				  'capability' => 'edit_theme_options',
-				  'default' => 'Lorem Ipsum Dolor Sit amet',
 				  'sanitize_callback' => 'sanitize_text',
 				) );
 
-				$wp_customize->add_control( 'mogultheme_textarea_home1', array(
-				  'type' => 'textarea',
+				$wp_customize->add_control( 'mogultheme_text_facebook', array(
+				  'type' => 'text',
 				  'section'        => 'theme_options',
-				  'label' => __( 'Custom Text Area 1' ),
-				  'description' => __( 'This is a custom textarea.' ),
+				  'label' => __( 'Add Facebook page link' ),
 				) );
-				$wp_customize->add_setting( 'mogultheme_textarea_home2', array(
+				$wp_customize->add_setting( 'mogultheme_text_pinterest', array(
 				  'capability' => 'edit_theme_options',
-				  'default' => 'Lorem Ipsum Dolor Sit amet',
 				  'sanitize_callback' => 'sanitize_text',
 				) );
 
-				$wp_customize->add_control( 'mogultheme_textarea_home2', array(
-				  'type' => 'textarea',
+				$wp_customize->add_control( 'mogultheme_text_pinterest', array(
+				  'type' => 'text',
 				  'section'        => 'theme_options',
-				  'label' => __( 'Custom Text Area 2' ),
-				  'description' => __( 'This is a custom textarea.' ),
+				  'label' => __( 'Add Pinterest page link' ),
 				) );				
 
-				$wp_customize->add_setting( 'mogultheme_textarea_contacts', array(
+				$wp_customize->add_setting( 'mogultheme_text_insta', array(
 				  'capability' => 'edit_theme_options',
-				  'default' => 'Lorem Ipsum Dolor Sit amet',
 				  'sanitize_callback' => 'sanitize_text',
 				) );
 
-				$wp_customize->add_control( 'mogultheme_textarea_contacts', array(
-				  'type' => 'textarea',
-				  'section'        => 'theme_options',
-				  'label' => __( 'Custom Text Area 2' ),
-				  'description' => __( 'This is a custom textarea.' ),
+				$wp_customize->add_control( 'mogultheme_text_insta', array(
+				  'type' => 'text',
+				  'section' => 'theme_options',
+				  'label' => __( 'Add Instagram page link' ),
+				) );
+				$wp_customize->add_setting( 'mogultheme_text_linkeedin', array(
+				  'capability' => 'edit_theme_options',
+				  'sanitize_callback' => 'sanitize_text',
 				) );
 
-$wp_customize->add_setting( 'mogultheme_dropdownpages_setting_id', array(
-  'capability' => 'edit_theme_options',
-  'sanitize_callback' => 'mogultheme_sanitize_dropdown_pages',
-) );
+				$wp_customize->add_control( 'mogultheme_text_linkeedin', array(
+				  'type' => 'text',
+				  'section'        => 'theme_options',
+				  'label' => __( 'Add LinkedIn page link' ),
+				) );
+				$wp_customize->add_setting( 'mogultheme_text_twitter', array(
+				  'capability' => 'edit_theme_options',
+				  'sanitize_callback' => 'sanitize_text',
+				) );
 
-$wp_customize->add_control( 'mogultheme_dropdownpages_setting_id', array(
-  'type' => 'dropdown-pages',
-  'section' => 'theme_options', 
-  'label' => __( 'Custom Dropdown Pages' ),
-  'description' => __( 'This is a custom dropdown pages option.' ),
-) );
+				$wp_customize->add_control( 'mogultheme_text_twitter', array(
+				  'type' => 'text',
+				  'section'        => 'theme_options',
+				  'label' => __( 'Add Twitter page link' ),
+				) );
+				$wp_customize->add_setting( 'mogultheme_text_contacts', array(
+				  'capability' => 'edit_theme_options',
+				  'sanitize_callback' => 'sanitize_text',
+				) );
+
+				$wp_customize->add_control( 'mogultheme_text_contacts', array(
+				  'type' => 'text',
+				  'section'        => 'theme_options',
+				  'label' => __( 'Add Email' ),
+				) );				
+
+				$wp_customize->add_setting( 'mogultheme_dropdownpages_setting_id', array(
+				  'capability' => 'edit_theme_options',
+				  'sanitize_callback' => 'mogultheme_sanitize_dropdown_pages',
+				) );
+
+				$wp_customize->add_control( 'mogultheme_dropdownpages_setting_id', array(
+				  'type' => 'dropdown-pages',
+				  'section' => 'theme_options', 
+				  'label' => __( 'Choose a booking page' ),
+				) );
 
 function mogultheme_sanitize_dropdown_pages( $page_id, $setting ) {
   // Ensure $input is an absolute integer.
@@ -381,17 +404,26 @@ function ajaxSelectServices()
 add_action('wp_ajax_load_forms', 'load_forms');
 add_action('wp_ajax_nopriv_load_forms', 'load_forms');
 function load_forms() {
-    // 
 
-    $page_link = new WP_Query( 'pagename=about' );
-    // "loop" through query (even though it's just one page) 
-    while ( $page_link->have_posts() ) : $page_link->the_post();
-        the_content();
-    endwhile;
-    // reset post data (important!)
-    wp_reset_postdata();
-	
-	wp_die();
+			$args = array(
+			  'p'         => $_POST['id'], // ID of a page, post, or custom type
+			  'post_type' => 'any'
+    		); 
+
+			$form = new WP_Query( $args );
+			if ( $form->have_posts() ) :
+				?>
+				<?php while ( $form->have_posts() ) : $form->the_post() ?>
+					<div class="content">
+						<?php the_title( '<h1>', '</h1>' ); ?>
+
+						<?php the_content(); ?>
+					</div>
+				<?php endwhile ?>
+				<?php
+			endif;
+
+			wp_die();
 }
 
 

@@ -5448,16 +5448,16 @@ header .custom-header {
         max-width: 100%; }
 
 header .inner-header {
-  height: 300px; }
+  height: 384px; }
   header .inner-header img {
     max-height: 100%; }
   header .inner-header .site-logo {
     max-height: 100%;
     max-width: 100%;
     text-align: right;
-    padding: 40px 12px 30px; }
+    padding: 16px 12px; }
     header .inner-header .site-logo img {
-      height: 230px !important; }
+      height: 350px !important; }
 
 header .top-menu {
   z-index: 1;
@@ -5488,13 +5488,13 @@ header .top-menu {
 
 .review-button.callform {
   position: absolute;
-  top: 0;
+  top: 280px;
   right: 0; }
 
 .book-button.callform {
   position: absolute;
-  right: 10%;
-  top: -200px; }
+  right: 110px;
+  top: 90px; }
 
 .buttons-block {
   position: relative; }
@@ -5539,16 +5539,17 @@ footer {
   max-width: 1708px;
   line-height: 1.572;
   font-size: 16px; }
-  .footer p {
-    margin: 0; }
   .footer-subscription {
     padding: 40px; }
+    .footer-subscription input[type=email] {
+      margin-top: 20px;
+      height: 44px; }
   .footer-contacts {
     border-left: 1px solid #fff;
     border-right: 1px solid #fff;
     padding: 40px 0 55px; }
   .footer-social {
-    padding: 40px 0 0; }
+    padding: 40px; }
   .footer-block-title {
     font-weight: 700;
     font-size: 19pt;
@@ -5558,7 +5559,7 @@ footer {
     margin-bottom: 30px; }
   .footer-contact {
     margin: 0;
-    padding: 0; }
+    padding: 30px 0 0; }
     .footer-contact li {
       display: inline-block; }
       .footer-contact li span {
@@ -5571,6 +5572,10 @@ footer {
         background: url(img/sprite.png) 0px -256px no-repeat; }
       .footer-contact li.icon-tel span {
         background: url(img/sprite.png) 0px -278px no-repeat; }
+
+.centered-block {
+  display: flex;
+  justify-content: center; }
 
 .social-links {
   margin: 0;
@@ -5602,7 +5607,7 @@ footer {
   font-size: 16pt;
   margin: 0 auto; }
   .content h1 {
-    margin: 100px 0;
+    margin: 50px 0;
     font-size: 32pt; }
 
 .portfolio .container {
@@ -5860,11 +5865,11 @@ form {
 
 .form-row {
   position: relative;
-  margin: 0 0 30px 0; }
-
-.form-title {
-  font-size: 32pt;
-  margin: 30px 0; }
+  margin: 0 0 30px 0;
+  float: left;
+  width: 100%; }
+  .form-row:first-child {
+    margin-bottom: 100px; }
 
 .wpcf7-form-control-wrap {
   float: right;
@@ -5878,9 +5883,38 @@ div.wpcf7 .ajax-loader {
 div.wpcf7-response-output {
   clear: both; }
 
+.wpcf7 input[type=text],
+.wpcf7 input[type=email],
+.wpcf7 input[type=tel],
+.wpcf7 textarea {
+  background: #f4f5f4;
+  border: 0;
+  outline: none; }
+
+.wpcf7 hr {
+  margin: 140px auto 125px;
+  width: 80%;
+  display: block;
+  clear: both; }
+
 .col-xs-20 {
   width: 20%;
   float: left; }
+
+@media (max-width: 1600px) {
+  .social-links a {
+    zoom: 0.5;
+    -moz-transform: scale(0.5);
+    -moz-transform-origin: 0 0; }
+  .footer-block-title {
+    font-size: 20px;
+    margin-bottom: 30px; }
+  .footer-contact {
+    margin: 0;
+    padding: 10px 0 0; }
+  .footer-subscription input[type=email] {
+    margin: 0;
+    height: 44px; } }
 
 @media (min-width: 768px) {
   .col-sm-20 {
@@ -5902,4 +5936,22 @@ div.wpcf7-response-output {
     width: 1700px; }
   .blog-wrap #primary {
     max-width: 1180px;
-    max-height: 2300px; } }
+    max-height: 2300px; }
+  .container {
+    max-width: 1588px; }
+    .container h1 {
+      margin: 100px 0;
+      font-size: 32pt; }
+  form {
+    max-width: auto;
+    margin: 0 auto; }
+  .form-row {
+    position: relative;
+    margin: 0 0 30px 0;
+    float: left;
+    width: 100%; }
+    .form-row:first-child {
+      margin-bottom: 100px; }
+  .footer-social {
+    padding: 40px 0 40px 30px;
+    min-width: 460px; } }
