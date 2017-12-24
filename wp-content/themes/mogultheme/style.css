@@ -5602,6 +5602,19 @@ footer {
       .social-links li a.email {
         background-position: -417px 66px; }
 
+.outer-container {
+  width: 1199px;
+  margin: 0 auto; }
+
+.divider {
+  margin: 40px 0 0;
+  width: 100%;
+  height: 2px;
+  border: none;
+  background: #ddd;
+  margin: 0;
+  padding: 0; }
+
 .content {
   max-width: 1460px;
   font-size: 16pt;
@@ -5621,6 +5634,16 @@ footer {
     max-width: 100%;
     height: auto; }
 
+.portfolio-description {
+  max-width: 980px;
+  text-align: center; }
+
+.portfolio-photo-block {
+  margin: 50px auto 40px; }
+
+#portfolio-result {
+  margin: 50px 0; }
+
 .service-content {
   text-align: center;
   max-width: 400px;
@@ -5634,19 +5657,31 @@ footer {
   text-transform: uppercase;
   margin: 85px auto; }
 
+.additional-services {
+  max-width: 850px;
+  text-align: center;
+  margin: 50px auto; }
+  .additional-services-title {
+    text-transform: uppercase; }
+
 .category-nav {
   padding: 10px 0;
+  margin: 40px auto;
   text-align: center; }
   .category-nav ul {
     margin: 0;
-    padding: 0; }
+    padding: 0;
+    display: inline-block; }
     .category-nav ul li {
       display: inline-block;
-      padding: 15px;
+      padding: 0 40px;
       cursor: pointer;
+      border-right: 1px solid #333;
       text-transform: uppercase; }
       .category-nav ul li:hover, .category-nav ul li:focus, .category-nav ul li:active {
         opacity: 0.8; }
+      .category-nav ul li:last-child {
+        border: 0; }
     .category-nav ul .active {
       opacity: 0.8; }
 

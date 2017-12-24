@@ -248,7 +248,7 @@ function mogultheme_is_static_front_page() {
 
 //Get Portfolio Navigation (show 4 terms)
 function get_portfolio_nav(){
-    $terms = get_terms('portfolio_category');
+    $terms = get_terms('portfolio_category','orderby=ID');
     $filters_html = false;
  
     if( $terms ):
@@ -269,7 +269,7 @@ function get_portfolio_nav(){
 
 //Get Portfolio Navigation (show 4 terms)
 function get_services_nav(){
-    $terms = get_terms('services_category');
+    $terms = get_terms('services_category','orderby=ID');
     $filters_html = false;
  
     if( $terms ):

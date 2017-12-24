@@ -19,6 +19,9 @@ get_header(); ?>
 			<div class="container category-nav">
 			    <?php echo get_portfolio_nav(); ?>
 			</div>
+				<div class="outer-container">
+				    <hr class="divider divider--EFEFEF">
+				</div>			
 <div class="bubblingG">
 	<span id="bubblingG_1">
 	</span>
@@ -48,7 +51,7 @@ get_header(); ?>
 
 			if($portfolio->have_posts() ) : 
 
-				echo '<div class="container"><div class="row">';
+				echo '<div class="container portfolio-photo-block"><div class="row">';
 			
 
 				while ( $portfolio->have_posts() ) : $portfolio->the_post(); 
@@ -66,13 +69,15 @@ get_header(); ?>
 			
 			endif;
 
-			wp_reset_postdata(); 
-
-			$description = get_term_field( 'description', 12, 'portfolio_category' );  
+			wp_reset_postdata(); ?>
+				<div class="outer-container">
+				    <hr class="divider divider--EFEFEF">
+				</div>	
+			<?php $description = get_term_field( 'description', 12, 'portfolio_category' );  
 			if( is_wp_error( $description ) ) {
 				 echo 'description is empty';
 			} else { 
-				 echo  '<div class="container">'.$description.'</div>';
+				 echo  '<div class="container portfolio-description">'.$description.'</div>';
 			} ?>				
 			</div>
 

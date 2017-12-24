@@ -329,6 +329,19 @@ footer{
 	    }
     }
 }
+.outer-container {
+    width: 1199px;
+    margin: 0 auto;
+}
+.divider{
+	margin: 40px 0 0; 
+    width: 100%;
+    height: 2px;
+    border: none;
+    background: #ddd;
+    margin: 0;
+    padding: 0;
+}
 
 .content{
     max-width: 1460px;
@@ -350,6 +363,16 @@ footer{
 			height:auto;
 		}	
     }
+    &-description{
+    	max-width:980px;
+    	text-align:center;
+    }
+    &-photo-block{
+    margin:50px auto 40px;
+    }
+}
+#portfolio-result{
+	margin:50px 0;
 }
 .service{
 	&-content{
@@ -373,21 +396,36 @@ footer{
 	}
 }
 
+.additional-services{
+    max-width: 850px;
+    text-align: center;
+    margin: 50px auto;
+	&-title{
+		text-transform:uppercase;
+	}
+}
+
     .category-nav{
-    	    padding: 10px 0;
-    		text-align: center;
+	    padding: 10px 0;
+	    margin: 40px auto;
+	    text-align: center;
 		ul{
 			margin:0;
 			padding:0;
+	    	display: inline-block;			
 			li{
-				display:inline-block;
-				padding:15px;
-				cursor:pointer;
-    			text-transform: uppercase;				
+				display: inline-block;
+			    padding: 0 40px;
+			    cursor: pointer;
+			    border-right: 1px solid #333;
+			    text-transform: uppercase;			
 				&:hover,
 				&:focus,
 				&:active{
 					opacity:0.8;
+				}
+				&:last-child{
+					border:0;
 				}
 			}
 			.active{
