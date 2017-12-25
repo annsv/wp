@@ -102,23 +102,23 @@ header{
 	    }
 
 		.site-logo{
-			top: 0;
-	    	display: block;
-	    	left: 0;
-	    	height: auto;
-	    	padding: 40px 0 30px;
-	    	position: absolute;
-	    	width: 100%;
-	    	text-align: center;
+		    top: 0;
+		    display: block;
+		    left: 0;
+		    height: auto;
+		    padding: 40px 1px 30px;
+		    position: absolute;
+		    width: 100%;
+		    text-align: right;
 		    a{
-		        text-decoration: none;
-				position: relative;
-	    		display: inline-block;
-			    width: auto;		
+			    text-decoration: none;
+			    position: relative;
+			    display: inline-block;
+			    width: auto;
+
 			    img{
 			        display: inline-block;
 				    width: auto;
-				    height: auto;
 	    			max-width: 100%;
 			    }	
 		    }
@@ -126,16 +126,17 @@ header{
 	}	
 .inner-header	{
 	height:384px;
-	img{
-	    max-height: 100%;	
-	}
+
 		.site-logo{
 	    	max-height: 100%;
 	    	max-width: 100%;
 	    	text-align: right;
 	    	padding: 16px 12px;
-	    	img{height:350px!important;}
+	    	img{height:350px;}
 	    }	
+	    img{
+	    	max-height: 100%;	
+		}
 }
 	.top-menu{
     	z-index: 1;	
@@ -167,6 +168,9 @@ header{
     width: 186px;
     height: 186px;
     display:block;
+    zoom: 0.94;   
+	-moz-transform: scale(0.94);
+	-moz-transform-origin: 0 0;
 	}
 	.top-button{
 	    margin: 18px 0 -140px 22px!important;
@@ -184,39 +188,46 @@ header{
 .buttons-block{
 	position:relative;
 }
-.container.content-on-main{
+.content-on-main{
     max-width: 974px;
-    padding: 130px 0 70px;
     text-align: center;
     font-size: 18pt;
     font-family: "Futura LT";
     color: #4d4f50;
     line-height: 1.572;
+    margin: 135px auto 30px;
+	h1{
+		margin: 35px 0 80px;
+		font-size:32pt;
+	}    
 }
 
 .content-block{
-	margin:68px 0 90px;
+	margin:50px 0 90px;
 	padding:0;
 }
 
 .contacts-block{
-    margin: 85px auto 90px;
+    margin: 30px auto;
+    padding: 0;
     max-width: 400px;
 	p{
 		margin-bottom:30px;
 	}
 }
 
-.img-block1{
+.img-block-model{
+	margin-bottom:100px;
 	img{	
 		padding:48px 50px;
 		border: 1px solid #000;	
 	}
 }
 
-.img-block2{
+.img-block-artist{
+	margin-bottom:75px;
 	img{	
-		padding:46px 36px 40px 40px;// но думаю все же лучше одинаковые отступы делать. например 46px 36px;
+		padding:48px 50px;
 		border: 1px solid #000;	
 	}
 }
@@ -270,6 +281,10 @@ footer{
 
 		li {
 			display: inline-block;
+			margin-right:10px;
+			&:last-child{
+				margin:0;
+			}
 			span{
 			    margin: 0 0 0 2px;
 			    width: 20px;
@@ -346,7 +361,7 @@ footer{
 .content{
     max-width: 1460px;
     font-size: 16pt;
-    margin: 0 auto;
+    margin: 100px auto;
 	h1{
 		margin: 50px 0;
 		font-size:32pt;
@@ -359,26 +374,27 @@ footer{
 	    padding: 10px 0;
 		a{display:block;}
 		img{
-			max-width:100%;
-			height:auto;
+		    max-width: 100%;
+		    height: auto;
+		    width: 100%;
 		}	
     }
     &-description{
-    	max-width:980px;
-    	text-align:center;
+    	max-width: 980px;
+	    text-align: center;
+	    margin: 50px auto 0;    	
     }
     &-photo-block{
-    margin:50px auto 40px;
+    margin:45px auto;
     }
 }
-#portfolio-result{
-	margin:50px 0;
-}
+
 .service{
 	&-content{
 		text-align:center;
 		max-width:400px;
 		padding:50px 0;
+		margin: 0 auto;
 	}
 	&-name{
 		text-transform:uppercase;
@@ -387,7 +403,9 @@ footer{
 	
 	}	
 	&-description{
-	
+	    max-width: 980px;
+	    text-align: center;
+	    margin: 50px auto 0;  
 	}	
 	&-examples{
 		max-width:800px;
@@ -406,13 +424,12 @@ footer{
 }
 
     .category-nav{
-	    padding: 10px 0;
-	    margin: 40px auto;
+	    padding: 0;
 	    text-align: center;
 		ul{
-			margin:0;
-			padding:0;
-	    	display: inline-block;			
+			margin: 0;
+    		padding: 70px 0;
+    		display: inline-block;		
 			li{
 				display: inline-block;
 			    padding: 0 40px;
@@ -679,7 +696,7 @@ footer{
 		background-image: url(img/sprite.png);
 	    background-position: -1px 0px;
 	    border: none;
-	    /* display: block; */
+	    color: transparent;
 	    border-radius: 50%;
 	    height: 122px;
 	    width: 124px;
@@ -737,6 +754,7 @@ div.wpcf7-response-output {
     width: 20%;
     float: left;
 }
+
 @media(max-width: 1600px){
 	.social-links {
 
@@ -754,6 +772,9 @@ div.wpcf7-response-output {
 		&-contact {
 		    margin: 0;
 		    padding: 10px 0 0;
+		    li{
+				margin-right:10px;
+			}
 		}
 		&-subscription input[type=email] {
 			margin:0;	  
@@ -762,11 +783,148 @@ div.wpcf7-response-output {
 	}
 }
 
+@media(max-width: 1200px){
+	.outer-container {
+	    width: 970px;
+	    margin: 0 auto;
+	}
+	.divider{
+	}
+}
+
+
+
+@media(max-width: 992px){
+	.footer{
+		&-contacts,
+		&-social,
+		&-subscription{
+			display:block;
+			border:0;
+			margin:10px 0;
+		}  
+	} 
+	.top-button.book-button{
+	    zoom: 0.60;   
+		-moz-transform: scale(0.60);
+		-moz-transform-origin: 0 0;
+	}	
+	.outer-container {
+	    width: 750px;
+	    margin: 0 auto;
+	}
+	.divider{
+	}	
+}
+@media(max-width: 800px){
+ 	.top-button.book-button{
+	    zoom: 0.35;   
+		-moz-transform: scale(0.60);
+		-moz-transform-origin: 0 0;
+	}
+	header {
+		.top-menu a {
+	    padding-top: 15px;
+	    padding-bottom: 15px;
+	    z-index: 9999;
+		}
+		.custom-header{ 
+			max-height: 300px;
+			img {
+		    	width: 100%;
+		    	max-height: 300px;
+			}
+		}
+		.site-logo img{
+		max-height:200px;
+		}
+	}
+
+	.footer{
+		&-contacts,
+		&-social,
+		&-subscription{
+			padding:15px;
+		} 
+	}
+
+}
+
+@media(max-width: 768px){
+	.centered-block {
+	    display: block;
+	    justify-content: center;
+	} 
+	.content-on-main {
+    	margin: 50px auto 30px;
+    	h1{
+    		margin:35px 0;
+    	}
+	}	
+	.content-block{
+		margin:30px 0 45px;
+	}
+	.content{
+	margin:50px auto 50px;
+	}
+	.outer-container {
+	    width: 94%;
+	    margin: 0 auto;
+	}
+	.divider{
+	}	
+	.category-nav ul {
+  		padding: 30px 0;
+  		li{
+  		padding:0 20px;
+  		}
+	}
+}
+
+@media(max-width: 480px){
+
+	.category-nav ul {
+  		padding: 30px 0;
+  		li{
+		    display: inline-block;
+		    padding: 0 15px;
+		    border: 0;
+  		}
+	}
+	header .custom-header {
+	    max-height: 200px;
+	    img{ 
+		    max-height: 200px;
+	    }
+		.site-logo  img {
+			max-height: 170px;
+    		height: auto;
+		}	    
+	}	
+	.service{
+		&-content{
+			padding:30px 0;
+		}
+	
+		&-examples {
+
+		    margin: 35px auto;
+		}	
+	}
+	.loadmore {
+    	width: 240px;
+	}
+	.review-item {
+	    margin: 0;
+    }	
+}
+
 @media (min-width: 768px) {
-.col-sm-20 {
+	.col-sm-20 {
         width: 20%;
         float: left;
     }
+
 }
 
 @media (min-width: 992px) {
@@ -774,6 +932,8 @@ div.wpcf7-response-output {
         width: 20%;
         float: left;
     }
+
+
 }
 
 @media (min-width: 1200px) {
@@ -783,7 +943,49 @@ div.wpcf7-response-output {
     }
 }
 
-@media (min-width: 1600px) {
+@media (min-width: 1800px) {
+	.custom-header {
+		.site-logo{
+		    a{
+			    text-decoration: none;
+			    position: relative;
+			    display: inline-block;
+			    width: auto;
+			    margin-right: 326px;		
+			}
+		}
+	}		
+
+	.content-on-main{
+    margin: 135px auto 30px;
+
+	h1{
+		margin: 35px 0 80px;
+		font-size:32pt;
+	}    
+
+}
+
+.content{
+    max-width: 1460px;
+    font-size: 16pt;
+    marign: 115px 0 60px;
+	h1{
+		margin: 50px 0;
+		font-size:32pt;
+	}
+}
+
+    .category-nav{
+	    padding: 0;
+	    text-align: center;
+		ul{
+			margin: 0;
+    		padding: 70px 0;
+    		display: inline-block;	
+    		}
+    }
+
     .blog-wrap{
 	    .container{
 			width:1700px;
@@ -799,26 +1001,41 @@ div.wpcf7-response-output {
 	.container{
 	    max-width: 1588px;
 		h1{
-			margin: 100px 0;
+			margin: 50px 0 80px;
 			font-size:32pt;
 		}
 	}
-form {
-    max-width: auto;
-    margin: 0 auto;
-}	
-.form-row {
-    position: relative;
-    margin: 0 0 30px 0;
-    float: left;
-    width: 100%;
-    &:first-child{
-    	margin-bottom:100px;
-    }
-}	
-
-	.footer-social {
-	    padding: 40px 0 40px 30px;	
-	    min-width: 460px;
+	form {
+	    max-width: auto;
+	    margin: 0 auto;
+	}	
+	.form-row {
+	    position: relative;
+	    margin: 0 0 30px 0;
+	    float: left;
+	    width: 100%;
+	    &:first-child{
+	    	margin-bottom:100px;
+	    }
+	}	
+	.footer{
+		&-contact {
+		    li{
+				margin-right:40px;
+				&:last-child{
+					margin:0;
+				}
+			}
+		}
+		&-contacts{
+			max-width: 712px;
+		}
+		&-social {
+		    padding: 40px 0 40px 30px;	
+		    min-width: 460px;
+		}
+		&-subscription{
+			padding: 40px 80px 0 15px;
+		}
 	}
 }

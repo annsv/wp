@@ -443,13 +443,15 @@ function load_reviews_by_ajax() {
 		?>
 		<?php while ( $reviews->have_posts() ) : $reviews->the_post() ?>
 			<div class="col-md-6">
-				<div class="review-text">
-					<?php the_title();?>,<?php the_field('review_text');?>
-				</div>
+				<div class="review-item">				
+					<div class="review-text">
+						<?php the_title();?>,<?php the_field('review_text');?>
+					</div>
 
-				<div class="reviewer-info">
-					<div class="reviewer-name"><?php the_field('reviewer_name');?></div>
-				<div class="reviewer-location"><?php the_field('reviewer_location');?></div>
+					<div class="reviewer-info">
+						<div class="reviewer-name"><?php the_field('reviewer_name');?></div>
+						<div class="reviewer-location"><?php the_field('reviewer_location');?></div>
+					</div>
 				</div>
 			</div>
 		<?php endwhile ?>

@@ -8,8 +8,8 @@
  */
 ?>
 
-<article>
-	<div class="container content-on-main">
+<article class="container">
+	<div class="content-on-main">
 	<?php the_title( '<h1>', '</h1>' ); 
 	
 if( get_field( 'text_block_1') ): ?>
@@ -24,7 +24,7 @@ $image = get_field('model_photo');
 $size = 'full'; // (thumbnail, medium, large, full or custom size)
 
 ?>
-            <div class="img-block1">
+            <div class="img-block-model">
                 <?php if( !empty($image) ): ?>
 
                     <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
@@ -47,7 +47,7 @@ if( get_field( 'text_block_2') ): ?>
 $photo = get_field('makeup_artist_photo');
 $size = 'full'; // (thumbnail, medium, large, full or custom size)
 ?>
-            <div class="img-block1">
+            <div class="img-block-artist">
                 <?php if( !empty($photo) ): ?>
 
                     <img src="<?php echo $photo['url']; ?>" alt="<?php echo $photo['alt']; ?>" />
@@ -58,7 +58,7 @@ $size = 'full'; // (thumbnail, medium, large, full or custom size)
 
 
 <?php if( get_field( 'makeup_artist_contacts') ): ?>
-            <div class="content-block">
+            <div class="contacts-block">
                 
             <?php the_field( 'makeup_artist_contacts');?>  
 

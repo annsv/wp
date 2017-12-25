@@ -12,7 +12,7 @@
 
 get_header(); ?>
 
-<div class="blog">
+
 	<div class="container">
 		<section id="primary" class="col-md-9">	
 			<?php while ( have_posts() ) : the_post(); ?>
@@ -28,5 +28,5 @@ get_header(); ?>
 		</section>	
 	<?php get_sidebar(); ?>
 </div><!-- .wrap -->
-</div>
+
 <?php get_footer();

@@ -25,17 +25,17 @@
 			<aside class="widget-area centered-block" role="complementary" aria-label="<?php esc_attr_e( 'Footer', 'mogultheme' ); ?>">
 				<?php
 				if ( is_active_sidebar( 'sidebar-2' ) ) { ?>
-					<div class="footer-subscription col-md-4 col-lg-3 ">
+					<div class="footer-subscription col-xs-12 col-sm-4 col-md-4 col-lg-3 ">
 						<?php dynamic_sidebar( 'sidebar-2' ); ?>
 					</div>
 				<?php }
 				if ( is_active_sidebar( 'sidebar-3' ) ) { ?>
-					<div class="footer-contacts col-md-4 col-lg-5">
+					<div class="footer-contacts col-xs-12 col-sm-4 col-md-4 col-lg-5">
 						<?php dynamic_sidebar( 'sidebar-3' ); ?>
 					</div>
 				<?php }
 				if ( is_active_sidebar( 'sidebar-4' ) ) { ?>
-					<div class="footer-social col-md-4 col-lg-3 ">
+					<div class="footer-social col-xs-12 col-sm-4 col-md-4 col-lg-3 ">
 						<?php dynamic_sidebar( 'sidebar-4' ); ?>
 <ul class="social-links">
 			<?php if( get_theme_mod( 'mogultheme_text_facebook') != "" ): ?>
