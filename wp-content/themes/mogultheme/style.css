@@ -5490,13 +5490,17 @@ header .top-menu {
 
 .review-button.callform {
   position: absolute;
+  cursor: pointer;
   top: 280px;
-  right: 0; }
+  right: 5%;
+  z-index: 1000; }
 
 .book-button.callform {
   position: absolute;
-  right: 110px;
-  top: 90px; }
+  cursor: pointer;
+  right: 16%;
+  top: 90px;
+  z-index: 1000; }
 
 .buttons-block {
   position: relative; }
@@ -5587,8 +5591,16 @@ footer {
         background: url(img/sprite.png) 0px -278px no-repeat; }
 
 .centered-block {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
   justify-content: center; }
+  .centered-block:before, .centered-block:after {
+    display: none; }
 
 .social-links {
   margin: 0;
@@ -5864,38 +5876,39 @@ footer {
     background-color: white;
     -moz-transform: translateY(-20px); } }
 
-.blog {
+.wrap {
   max-width: 1680px;
   font-size: 16pt;
   text-align: center;
-  margin: 50px 0; }
-  .blog-post-title {
+  margin: 115px auto; }
+  .wrap-post-title {
     font-size: 32pt;
     padding: 0 0 40px;
     border-bottom: 1px solid #ddd;
     padding: 45px 0px; }
-  .blog-content {
+  .wrap-content {
     margin: 50px 0px; }
-  .blog article {
+  .wrap article {
     margin: 0 50px 50px 0; }
-  .blog #primary {
+  .wrap #primary {
     max-height: 1000px;
-    overflow: auto; }
-  .blog #secondary {
+    overflow-y: scroll;
+    padding-right: 30px; }
+  .wrap #secondary {
     padding: 0 0 0 50px;
     margin-top: 145px;
     font-size: 16pt;
     text-transform: uppercase;
     text-align: left; }
-    .blog #secondary .widget-title {
+    .wrap #secondary .widget-title {
       padding: 20px 15px;
       border-top: 1px solid #ddd;
       border-bottom: 1px solid #ddd; }
-    .blog #secondary ul {
+    .wrap #secondary ul {
       margin: 0 0 30px 15px;
       font-size: 14pt;
       padding: 0 0 0 20px; }
-      .blog #secondary ul li {
+      .wrap #secondary ul li {
         margin: 15px 0; }
 
 .wpcf7 input[type=submit] {
@@ -5920,12 +5933,21 @@ form {
   margin: 0 0 30px 0;
   float: left;
   width: 100%; }
-  .form-row:first-child {
-    margin-bottom: 100px; }
+  .form-row span:first-child {
+    float: left;
+    width: 20%; }
+
+div.form-row:last-child {
+  margin-bottom: 100px; }
+
+#form-block h1 {
+  margin-bottom: 120px; }
 
 .wpcf7-form-control-wrap {
   float: right;
-  margin-right: 200px; }
+  width: 52%;
+  margin-right: 24%;
+  max-height: 230px; }
 
 div.wpcf7 .ajax-loader {
   display: block;
@@ -5941,7 +5963,12 @@ div.wpcf7-response-output {
 .wpcf7 textarea {
   background: #f4f5f4;
   border: 0;
-  outline: none; }
+  outline: none;
+  width: 100%; }
+
+.wpcf7 textarea {
+  height: 230px;
+  resize: none; }
 
 .wpcf7 hr {
   margin: 140px auto 125px;
@@ -5953,6 +5980,7 @@ div.wpcf7-response-output {
   width: 20%;
   float: left; }
 
+/*Media Queries*/
 @media (max-width: 1600px) {
   .social-links a {
     zoom: 0.5;
@@ -5968,12 +5996,27 @@ div.wpcf7-response-output {
       margin-right: 10px; }
   .footer-subscription input[type=email] {
     margin: 0;
-    height: 44px; } }
+    height: 44px; }
+  .wpcf7 input[type=submit] {
+    right: 10px;
+    top: 56px; }
+  .review-button {
+    right: 5%; } }
 
 @media (max-width: 1200px) {
   .outer-container {
     width: 970px;
-    margin: 0 auto; } }
+    margin: 0 auto; }
+  .review-button.callform {
+    top: 380px;
+    zoom: 0.60;
+    -moz-transform: scale(0.6);
+    -moz-transform-origin: 0 0; }
+  .book-button.callform {
+    top: 200px;
+    zoom: 0.60;
+    -moz-transform: scale(0.6);
+    -moz-transform-origin: 0 0; } }
 
 @media (max-width: 992px) {
   .footer-contacts, .footer-social, .footer-subscription {
@@ -5986,12 +6029,21 @@ div.wpcf7-response-output {
     -moz-transform-origin: 0 0; }
   .outer-container {
     width: 750px;
-    margin: 0 auto; } }
+    margin: 0 auto; }
+  form {
+    max-width: 600px; }
+  .wpcf7 input[type=submit] {
+    zoom: 0.60;
+    -moz-transform: scale(0.6);
+    -moz-transform-origin: 0 0;
+    top: 124px; }
+  .book-button.callform {
+    right: 12%; } }
 
 @media (max-width: 800px) {
   .top-button.book-button {
     zoom: 0.35;
-    -moz-transform: scale(0.6);
+    -moz-transform: scale(0.35);
     -moz-transform-origin: 0 0; }
   header .top-menu a {
     padding-top: 15px;
@@ -6025,7 +6077,32 @@ div.wpcf7-response-output {
   .category-nav ul {
     padding: 30px 0; }
     .category-nav ul li {
-      padding: 0 20px; } }
+      padding: 0 20px; }
+  #form-block h1 {
+    margin-bottom: 50px; }
+  form {
+    width: 60%;
+    max-width: none !important;
+    margin: 0 20px; }
+    form span {
+      float: left !important;
+      text-align: left !important;
+      width: 100% !important; }
+  .wpcf7 input[type=submit] {
+    right: -150px; }
+  .review-button.callform,
+  .book-button.callform {
+    top: 600px;
+    zoom: 0.40;
+    -moz-transform: scale(0.4);
+    -moz-transform-origin: 0 0; }
+  .book-button.callform {
+    top: 500px; }
+  .review-button.callform {
+    top: 700px; }
+  .wpcf7 hr {
+    margin: 50px auto;
+    width: 100%; } }
 
 @media (max-width: 480px) {
   .category-nav ul {
@@ -6073,14 +6150,14 @@ div.wpcf7-response-output {
     width: auto;
     margin-right: 326px; }
   .content-on-main {
-    margin: 135px auto 30px; }
+    margin: 135px auto 60px; }
     .content-on-main h1 {
       margin: 35px 0 80px;
       font-size: 32pt; }
   .content {
     max-width: 1460px;
     font-size: 16pt;
-    marign: 115px 0 60px; }
+    margin: 115px auto 60px; }
     .content h1 {
       margin: 50px 0;
       font-size: 32pt; }
@@ -6091,26 +6168,29 @@ div.wpcf7-response-output {
       margin: 0;
       padding: 70px 0;
       display: inline-block; }
-  .blog-wrap .container {
-    width: 1700px; }
-  .blog-wrap #primary {
-    max-width: 1180px;
-    max-height: 2300px; }
   .container {
     max-width: 1588px; }
     .container h1 {
       margin: 50px 0 80px;
       font-size: 32pt; }
   form {
-    max-width: auto;
-    margin: 0 auto; }
+    margin: 0 auto;
+    max-width: 1000px; }
+  #form-block h1 {
+    margin-bottom: 120px; }
   .form-row {
     position: relative;
-    margin: 0 0 30px 0;
+    margin: 0 0 50px 0;
     float: left;
     width: 100%; }
     .form-row:first-child {
       margin-bottom: 100px; }
+  .wpcf7-form-control-wrap {
+    float: right;
+    width: 60%;
+    max-width: 540px;
+    margin-right: 24%;
+    max-height: 230px; }
   .footer-contact li {
     margin-right: 40px; }
     .footer-contact li:last-child {

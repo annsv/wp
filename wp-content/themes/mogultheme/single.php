@@ -12,8 +12,7 @@
 
 get_header(); ?>
 
-
-	<div class="container">
+<div class="wrap container">
 		<section id="primary" class="col-md-9">	
 			<?php while ( have_posts() ) : the_post(); ?>
 					<?php get_template_part( 'template-parts/content' ); ?>
@@ -27,6 +26,6 @@ get_header(); ?>
 
 		</section>	
 	<?php get_sidebar(); ?>
-</div><!-- .wrap -->
+</div>
 
 <?php get_footer();

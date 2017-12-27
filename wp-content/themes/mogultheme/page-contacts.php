@@ -18,9 +18,7 @@ get_header(); ?>
 	  	$leave_a_review_id = url_to_postid($leave_a_review_link);  	
 	?> 
 <div class="content contact-page">
-	<div class="container">
-
-		<div class="text-center">
+	<div class="text-center">
 
 				<div class="buttons-block">
 					<a id="<?php echo $book_an_appoinment_id;?>" class="book-button callform"></a>
@@ -31,7 +29,6 @@ get_header(); ?>
 				  	<?php echo do_shortcode( '[contact-form-7 id="174" title="Contact"]' ); ?>
 			    </div>
 
-		</div>
 	</div>
 </div>
 <?php get_footer();

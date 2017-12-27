@@ -18,7 +18,7 @@
 get_header(); ?>
 <?php
 		if ( have_posts() ) :?>
-<div class="blog">
+<div class="wrap">
 	<div class="container">
 		<section id="primary" class="col-md-9">	
 

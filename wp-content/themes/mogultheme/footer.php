@@ -30,7 +30,7 @@
 					</div>
 				<?php }
 				if ( is_active_sidebar( 'sidebar-3' ) ) { ?>
-					<div class="footer-contacts col-xs-12 col-sm-4 col-md-4 col-lg-5">
+					<div class="footer-contacts col-xs-12 col-sm-4 col-md-4 col-lg-6">
 						<?php dynamic_sidebar( 'sidebar-3' ); ?>
 					</div>
 				<?php }

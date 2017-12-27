@@ -177,13 +177,17 @@ header{
 	}
 	.review-button.callform{
 		position: absolute;
+		cursor:pointer;		
 	    top: 280px;
-	    right: 0;
+	    right: 5%;
+	    z-index: 1000;
 	}	
 	.book-button.callform{
 		position: absolute;
-	    right: 110px;
+		cursor:pointer;
+	    right: 16%;
 	    top: 90px;
+    	z-index: 1000;	    
 	}	
 .buttons-block{
 	position:relative;
@@ -304,10 +308,20 @@ footer{
 	
 }
 .centered-block{
-	display: flex;
+	display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
     justify-content: center;
-}	
 
+	&:before, 
+	&:after{
+	   display: none;
+	}
+}
 .social-links {
     margin: 0;
     padding: 0;
@@ -513,144 +527,144 @@ footer{
     cursor:pointer;
 }
 
-.bubblingG {
-	text-align: center;
-	width:78px;
-	height:49px;
-	margin: auto;
-	display:none;
-}
+	.bubblingG {
+		text-align: center;
+		width:78px;
+		height:49px;
+		margin: auto;
+		display:none;
+	}
 
-.bubblingG span {
-	display: inline-block;
-	vertical-align: middle;
-	width: 10px;
-	height: 10px;
-	margin: 24px auto;
-	background: rgb(0,0,0);
-	border-radius: 49px;
-		-o-border-radius: 49px;
-		-ms-border-radius: 49px;
-		-webkit-border-radius: 49px;
-		-moz-border-radius: 49px;
-	animation: bubblingG 1.5s infinite alternate;
-		-o-animation: bubblingG 1.5s infinite alternate;
-		-ms-animation: bubblingG 1.5s infinite alternate;
-		-webkit-animation: bubblingG 1.5s infinite alternate;
-		-moz-animation: bubblingG 1.5s infinite alternate;
-}
-
-#bubblingG_1 {
-	animation-delay: 0s;
-		-o-animation-delay: 0s;
-		-ms-animation-delay: 0s;
-		-webkit-animation-delay: 0s;
-		-moz-animation-delay: 0s;
-}
-
-#bubblingG_2 {
-	animation-delay: 0.45s;
-		-o-animation-delay: 0.45s;
-		-ms-animation-delay: 0.45s;
-		-webkit-animation-delay: 0.45s;
-		-moz-animation-delay: 0.45s;
-}
-
-#bubblingG_3 {
-	animation-delay: 0.9s;
-		-o-animation-delay: 0.9s;
-		-ms-animation-delay: 0.9s;
-		-webkit-animation-delay: 0.9s;
-		-moz-animation-delay: 0.9s;
-}
-
-
-
-@keyframes bubblingG {
-	0% {
+	.bubblingG span {
+		display: inline-block;
+		vertical-align: middle;
 		width: 10px;
 		height: 10px;
-		background-color:rgb(0,0,0);
-		transform: translateY(0);
+		margin: 24px auto;
+		background: rgb(0,0,0);
+		border-radius: 49px;
+			-o-border-radius: 49px;
+			-ms-border-radius: 49px;
+			-webkit-border-radius: 49px;
+			-moz-border-radius: 49px;
+		animation: bubblingG 1.5s infinite alternate;
+			-o-animation: bubblingG 1.5s infinite alternate;
+			-ms-animation: bubblingG 1.5s infinite alternate;
+			-webkit-animation: bubblingG 1.5s infinite alternate;
+			-moz-animation: bubblingG 1.5s infinite alternate;
 	}
 
-	100% {
-		width: 23px;
-		height: 23px;
-		background-color:rgb(255,255,255);
-		transform: translateY(-20px);
-	}
-}
-
-@-o-keyframes bubblingG {
-	0% {
-		width: 10px;
-		height: 10px;
-		background-color:rgb(0,0,0);
-		-o-transform: translateY(0);
+	#bubblingG_1 {
+		animation-delay: 0s;
+			-o-animation-delay: 0s;
+			-ms-animation-delay: 0s;
+			-webkit-animation-delay: 0s;
+			-moz-animation-delay: 0s;
 	}
 
-	100% {
-		width: 23px;
-		height: 23px;
-		background-color:rgb(255,255,255);
-		-o-transform: translateY(-20px);
-	}
-}
-
-@-ms-keyframes bubblingG {
-	0% {
-		width: 10px;
-		height: 10px;
-		background-color:rgb(0,0,0);
-		-ms-transform: translateY(0);
+	#bubblingG_2 {
+		animation-delay: 0.45s;
+			-o-animation-delay: 0.45s;
+			-ms-animation-delay: 0.45s;
+			-webkit-animation-delay: 0.45s;
+			-moz-animation-delay: 0.45s;
 	}
 
-	100% {
-		width: 23px;
-		height: 23px;
-		background-color:rgb(255,255,255);
-		-ms-transform: translateY(-20px);
-	}
-}
-
-@-webkit-keyframes bubblingG {
-	0% {
-		width: 10px;
-		height: 10px;
-		background-color:rgb(0,0,0);
-		-webkit-transform: translateY(0);
+	#bubblingG_3 {
+		animation-delay: 0.9s;
+			-o-animation-delay: 0.9s;
+			-ms-animation-delay: 0.9s;
+			-webkit-animation-delay: 0.9s;
+			-moz-animation-delay: 0.9s;
 	}
 
-	100% {
-		width: 23px;
-		height: 23px;
-		background-color:rgb(255,255,255);
-		-webkit-transform: translateY(-20px);
-	}
-}
 
-@-moz-keyframes bubblingG {
-	0% {
-		width: 10px;
-		height: 10px;
-		background-color:rgb(0,0,0);
-		-moz-transform: translateY(0);
+
+	@keyframes bubblingG {
+		0% {
+			width: 10px;
+			height: 10px;
+			background-color:rgb(0,0,0);
+			transform: translateY(0);
+		}
+
+		100% {
+			width: 23px;
+			height: 23px;
+			background-color:rgb(255,255,255);
+			transform: translateY(-20px);
+		}
 	}
 
-	100% {
-		width: 23px;
-		height: 23px;
-		background-color:rgb(255,255,255);
-		-moz-transform: translateY(-20px);
-	}
-}
+	@-o-keyframes bubblingG {
+		0% {
+			width: 10px;
+			height: 10px;
+			background-color:rgb(0,0,0);
+			-o-transform: translateY(0);
+		}
 
-.blog{
-		max-width:1680px;
-		font-size:16pt;
-		text-align:center;
-    	margin: 50px 0;		
+		100% {
+			width: 23px;
+			height: 23px;
+			background-color:rgb(255,255,255);
+			-o-transform: translateY(-20px);
+		}
+	}
+
+	@-ms-keyframes bubblingG {
+		0% {
+			width: 10px;
+			height: 10px;
+			background-color:rgb(0,0,0);
+			-ms-transform: translateY(0);
+		}
+
+		100% {
+			width: 23px;
+			height: 23px;
+			background-color:rgb(255,255,255);
+			-ms-transform: translateY(-20px);
+		}
+	}
+
+	@-webkit-keyframes bubblingG {
+		0% {
+			width: 10px;
+			height: 10px;
+			background-color:rgb(0,0,0);
+			-webkit-transform: translateY(0);
+		}
+
+		100% {
+			width: 23px;
+			height: 23px;
+			background-color:rgb(255,255,255);
+			-webkit-transform: translateY(-20px);
+		}
+	}
+
+	@-moz-keyframes bubblingG {
+		0% {
+			width: 10px;
+			height: 10px;
+			background-color:rgb(0,0,0);
+			-moz-transform: translateY(0);
+		}
+
+		100% {
+			width: 23px;
+			height: 23px;
+			background-color:rgb(255,255,255);
+			-moz-transform: translateY(-20px);
+		}
+	}
+
+.wrap{
+    max-width: 1680px;
+    font-size: 16pt;
+    text-align: center;
+    margin: 115px auto;   	
 	&-post-title{
 		font-size: 32pt;
 		padding:0 0 40px;
@@ -665,7 +679,8 @@ footer{
 	}
 	#primary{
 		max-height:1000px;
-		overflow:auto;
+		overflow-y: scroll;
+    	padding-right: 30px;
 	}
 	#secondary{
 	    padding: 0 0 0 50px;	
@@ -714,15 +729,25 @@ form {
     margin: 0 0 30px 0;
     float: left;
     width: 100%;
-    &:first-child{
-    	margin-bottom:100px;
+    span:first-child{
+    	float: left;
+    	width: 20%;
     }
-}
 
-.wpcf7-form-control-wrap {
-    float: right;
-    margin-right: 200px;
 }
+div.form-row:last-child{
+  	margin-bottom:100px;
+}
+	#form-block{
+		h1{margin-bottom:120px;}
+	}
+
+	.wpcf7-form-control-wrap {
+    float: right;
+    width: 52%;
+    margin-right: 24%;
+    max-height: 230px;
+	}
 
 div.wpcf7 .ajax-loader {
     display: block;
@@ -738,10 +763,15 @@ div.wpcf7-response-output {
 	input[type=email],
 	input[type=tel],
 	textarea{
-		background:#f4f5f4;
-		border:0;
-		outline: none;
+	    background: #f4f5f4;
+	    border: 0;
+	    outline: none;
+	    width: 100%;
 	}
+	textarea{
+	    height:230px;
+	    resize: none;
+	}	
 	hr{
 		margin:140px auto 125px;
 		width:80%;
@@ -754,7 +784,7 @@ div.wpcf7-response-output {
     width: 20%;
     float: left;
 }
-
+/*Media Queries*/
 @media(max-width: 1600px){
 	.social-links {
 
@@ -781,6 +811,15 @@ div.wpcf7-response-output {
 		    height: 44px;
 		}
 	}
+	
+
+	.wpcf7 input[type=submit] {
+	    right: 10px;
+	    top: 56px;
+	}	
+	.review-button{
+		right:5%;
+	}	
 }
 
 @media(max-width: 1200px){
@@ -788,8 +827,21 @@ div.wpcf7-response-output {
 	    width: 970px;
 	    margin: 0 auto;
 	}
-	.divider{
-	}
+
+	.review-button.callform{
+	    top: 380px;
+	    zoom: 0.60;   
+		-moz-transform: scale(0.60);
+		-moz-transform-origin: 0 0;
+	}	
+	.book-button.callform{
+    	top: 200px;	
+	    zoom: 0.60;   
+		-moz-transform: scale(0.60);
+		-moz-transform-origin: 0 0;
+
+	}	
+
 }
 
 
@@ -815,11 +867,23 @@ div.wpcf7-response-output {
 	}
 	.divider{
 	}	
+	form {
+	    max-width: 600px;
+	}	
+	.wpcf7 input[type=submit]{
+			zoom: 0.60;   
+			-moz-transform: scale(0.60);
+			-moz-transform-origin: 0 0;
+	    	top: 124px;		
+	}	
+	.book-button.callform {
+	    right: 12%;
+	}	
 }
 @media(max-width: 800px){
  	.top-button.book-button{
 	    zoom: 0.35;   
-		-moz-transform: scale(0.60);
+		-moz-transform: scale(0.35);
 		-moz-transform-origin: 0 0;
 	}
 	header {
@@ -879,6 +943,40 @@ div.wpcf7-response-output {
   		padding:0 20px;
   		}
 	}
+
+	#form-block h1 {
+	    margin-bottom: 50px;
+	}	
+	form{
+		span{
+		float:left!important;
+		text-align:left!important;
+		width:100%!important;
+		}
+	    width: 60%;
+	    max-width:none!important;
+	    margin: 0 20px;
+	}
+	.wpcf7 input[type=submit] {
+	    right: -150px;
+	}
+	.review-button.callform,
+	.book-button.callform {
+	top:600px;
+	    zoom: 0.40;   
+		-moz-transform: scale(0.40);
+		-moz-transform-origin: 0 0;
+	}
+	.book-button.callform {
+		top:500px;
+	}
+	.review-button.callform {
+		top:700px;
+	}	
+	.wpcf7 hr {
+	    margin: 50px auto;
+	    width: 100%;
+	}	
 }
 
 @media(max-width: 480px){
@@ -957,7 +1055,7 @@ div.wpcf7-response-output {
 	}		
 
 	.content-on-main{
-    margin: 135px auto 30px;
+    margin: 135px auto 60px;
 
 	h1{
 		margin: 35px 0 80px;
@@ -969,7 +1067,7 @@ div.wpcf7-response-output {
 .content{
     max-width: 1460px;
     font-size: 16pt;
-    marign: 115px 0 60px;
+    margin: 115px auto 60px;
 	h1{
 		margin: 50px 0;
 		font-size:32pt;
@@ -986,18 +1084,6 @@ div.wpcf7-response-output {
     		}
     }
 
-    .blog-wrap{
-	    .container{
-			width:1700px;
-		}
-		#primary{
-			max-width: 1180px;
-			max-height: 2300px;
-		}
-		#secondary{
-			
-		}
-	}
 	.container{
 	    max-width: 1588px;
 		h1{
@@ -1006,17 +1092,31 @@ div.wpcf7-response-output {
 		}
 	}
 	form {
-	    max-width: auto;
 	    margin: 0 auto;
-	}	
-	.form-row {
+	    max-width: 1000px;
+	}
+	#form-block{
+		h1{margin-bottom:120px}
+	}
+	.form {
+
+		&-row {
 	    position: relative;
-	    margin: 0 0 30px 0;
+	    margin: 0 0 50px 0;
 	    float: left;
 	    width: 100%;
-	    &:first-child{
-	    	margin-bottom:100px;
-	    }
+	    	&:first-child{
+	    		margin-bottom:100px;
+		    }
+		}	
+	}
+
+	.wpcf7-form-control-wrap {
+		float: right;
+	    width: 60%;
+	    max-width: 540px;
+	    margin-right: 24%;
+	    max-height: 230px;
 	}	
 	.footer{
 		&-contact {
