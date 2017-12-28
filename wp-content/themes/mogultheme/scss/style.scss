@@ -778,6 +778,8 @@ div.wpcf7-response-output {
 		display: block;
 	    clear: both;
 	}
+	input:focus,
+	textarea:focus{  outline: none; }	
 }
 
 .col-xs-20 {
