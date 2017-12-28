@@ -788,6 +788,12 @@ div.wpcf7-response-output {
 }
 /*Media Queries*/
 @media(max-width: 1600px){
+
+header .custom-header .site-logo a{
+	text-align: center;
+	display: block;
+}
+	
 	.social-links {
 
 	    a{
